@@ -10,3 +10,8 @@ ROUTES = {
 TEMPLATES = {
 	'REGISTER': 'auth/register.html'
 }
+
+SETTINGS = {
+	'MIN_LEN': 5,
+	'MAX_LEN': 50,
+}
