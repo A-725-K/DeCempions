@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Register{% endblock %}</h1>
+  <h1>{% block title %}Create new account{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
   <form method="post">
-    <label for="username">Username</label>
+    <label for="username">Username*</label>
     <input id="username" name="username" required><br>
-    <label for="password">Password</label>
+    <label for="password">Password*</label>
     <input id="password" type="password" name="password" required><br>
-		<label for="repeat_password">Repeat Password</label>
-    <input id="repeat_password" type="repeat_password" name="repeat_password" required><br>
-		<label for="email">Email</label>
+		<label for="repeat_password">Repeat Password*</label>
+    <input id="repeat_password" type="password" name="repeat_password" required><br>
+		<label for="email">Email*</label>
     <input id="email" type="email" name="email" required><br>
 		<label for="first_name">First Name</label>
     <input id="first_name" type="text" name="first_name"><br>
