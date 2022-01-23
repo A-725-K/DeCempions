@@ -1,5 +1,5 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - DeCemptions</title>
+<title>{% block title %}{% endblock %} - DeCempions</title>
 {# <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> #}
 <nav>
   <h1>DeCempions</h1>
@@ -18,7 +18,7 @@
     {% block header %}{% endblock %}
   </header>
   {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
+    <div class="flash" style="color: red">{{ message }}</div>
   {% endfor %}
   {% block content %}{% endblock %}
 </section>
