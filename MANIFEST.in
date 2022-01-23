@@ -1,0 +1,9 @@
+include decempions/database/decempions.sql
+include LICENSE
+include README.md
+include setup.cfg
+
+graft flaskr/static
+graft flaskr/templates
+
+global-exclude *.py[co]
