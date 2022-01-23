@@ -35,4 +35,7 @@ def build_server(test_config=None):
 	def hello():
 		return '<h1 style="color: red; background-color: yellow;">Hello!</h1>'
 
+	from . import handlers
+	server.register_blueprint(handlers.auth_bp)
+
 	return server
