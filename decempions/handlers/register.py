@@ -18,7 +18,7 @@ def register():
 			flash(err)
 			return render_template(TEMPLATES['REGISTER'])
 
-		return redirect(url_for('hello'))
+		return redirect(url_for('auth.login'))
 
 	return render_template(TEMPLATES['REGISTER'])
 
@@ -30,7 +30,7 @@ def check_username(username):
 		return f'Username should have at least {SETTINGS["MIN_LEN"]} characters'
 	if username_len > SETTINGS['MAX_LEN']:
 		return f'Username should have at most {SETTINGS["MAX_LEN"]} characters'
-	if not re.match('^\w$', username):
+	if not re.match('^\w+$', username):
 		return 'Username must contain only letters and numbers'
 
 	return None
