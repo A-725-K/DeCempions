@@ -31,11 +31,9 @@ def build_server(test_config=None):
 	ensure_instance_path(server)
 	connection.init_app(server)
 
-	@server.route('/hello')
-	def hello():
-		return '<h1 style="color: red; background-color: yellow;">Hello!</h1>'
-
 	from . import handlers
 	server.register_blueprint(handlers.auth_bp)
+	server.register_blueprint(handlers.game_bp)
 
 	return server
+
