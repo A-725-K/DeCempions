@@ -5,10 +5,15 @@ HTTP_METHODS = {
 
 ROUTES = {
 	'REGISTER': '/register',
+	'LOGIN': '/login',
+	'LOGOUT': '/logout',
+	'HOME': '/home',
 }
 
 TEMPLATES = {
-	'REGISTER': 'auth/register.html'
+	'REGISTER': 'auth/register.html',
+	'LOGIN': 'auth/login.html',
+	'HOME': 'home.html',
 }
 
 SETTINGS = {
