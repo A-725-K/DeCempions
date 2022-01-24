@@ -1,5 +1,5 @@
 from decempions.database import connection
-from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.security import generate_password_hash
 
 class UserRepository():
 	_insert_query = '''
@@ -25,11 +25,11 @@ VALUES (?, ?, ?, ?, ?)
 		return None
 
 
-	def find_user_by_username(username):
+	def find_user_by_username(self, username):
 		db = connection.get_db()
-		return db.execute(_find_by_username, (username,))
+		return db.execute(self._find_by_username, (username,)).fetchone()
 
 
-	def find_user_by_email(email):
+	def find_user_by_email(self, email):
 		db = connection.get_db()
-		return db.execute(_find_by_email, (email,))
+		return db.execute(self._find_by_email, (email,)).fetchone()
