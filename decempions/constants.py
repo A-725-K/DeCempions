@@ -10,6 +10,10 @@ ROUTES = {
 	'HOME': '/home',
 }
 
+ADMIN_ROUTES = {
+	'IMPORT_TEAMS': '/import-teams'
+}
+
 TEMPLATES = {
 	'REGISTER': 'auth/register.html',
 	'LOGIN': 'auth/login.html',
