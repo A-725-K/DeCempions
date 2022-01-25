@@ -1,5 +1,5 @@
 -- * -- * -- * -- * -- * -- * -- * -- * -- * -- * -- * --
-DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Team;
 DROP TABLE IF EXISTS Match;
 
@@ -24,7 +24,11 @@ CREATE TABLE IF NOT EXISTS User (
 	next_match 		INTEGER NOT NULL DEFAULT 0,
 	match_played 	INTEGER NOT NULL DEFAULT 0,
 	-- pennant 		TEXT, -- path to the picture
- 	created_at 		TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+	created_at 		TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+	-- ADMIN USER
+	is_admin			BOOLEAN NOT NULL DEFAULT FALSE,
+	token					TEXT
 );
 CREATE UNIQUE INDEX IF NOT EXISTS user_username_idx ON User(username);
 CREATE UNIQUE INDEX IF NOT EXISTS user_email_idx 		ON User(email);
@@ -83,3 +87,7 @@ CREATE TABLE IF NOT EXISTS Result (
 );
 CREATE INDEX IF NOT EXISTS result_user_idx ON Result(user_id);
 -- * -- * -- * -- * -- * -- * -- * -- * -- * -- * -- * --
+
+INSERT INTO User(username, password, email, is_admin, token) VALUES ('dcadmin', 'pbkdf2:sha256:260000$Swj7GmUeWXwD0j3f$a1b4516d55574347e157922bcd97486898847e47ef8e3b76d6ee63188e7bed0e', 'dcadmin@gmail.com', TRUE, '1234');
+INSERT INTO User(username, password, email) VALUES ('Kenny12', 'pbkdf2:sha256:260000$Swj7GmUeWXwD0j3f$a1b4516d55574347e157922bcd97486898847e47ef8e3b76d6ee63188e7bed0e', 'aaaaa@gmail.com');
+INSERT INTO User(username, password, email) VALUES ('Cacio96', 'pbkdf2:sha256:260000$Swj7GmUeWXwD0j3f$a1b4516d55574347e157922bcd97486898847e47ef8e3b76d6ee63188e7bed0e', 'bbbbb@gmail.com');
