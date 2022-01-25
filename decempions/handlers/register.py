@@ -12,6 +12,8 @@ from email_validator import validate_email, EmailNotValidError
 	methods=(HTTP_METHODS['GET'], HTTP_METHODS['POST']),
 )
 def register():
+	if session.get('username'): return redirect(url_for('game.home'))
+	
 	if request.method == HTTP_METHODS['POST']:
 		err = handle_registration()
 		if err:

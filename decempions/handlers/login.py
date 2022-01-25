@@ -10,6 +10,8 @@ from werkzeug.security import check_password_hash
 	methods=(HTTP_METHODS['GET'], HTTP_METHODS['POST']),
 )
 def login():
+	if session.get('username'): return redirect(url_for('game.home'))
+
 	if request.method == HTTP_METHODS['POST']:
 		err = handle_login()
 		if err:
@@ -29,10 +31,6 @@ def handle_login():
 
 	user_repo = UserRepository()
 	user = user_repo.find_user_by_username(username)
-	print('---- [PASSWORD in User]', user['password'])
-	print('---- [PASSWORD in form]', password)
-	print('---- [PASSWORD check]', check_password_hash(password, user['password']))
-	print('---- [PASSWORD check]', check_password_hash(user['password'], password))
 	if not user or not check_password_hash(user['password'], password):
 		return 'Username or password are not correct'
 
