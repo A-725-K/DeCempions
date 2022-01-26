@@ -15,6 +15,9 @@ def login_required(view):
 def is_admin_request(view):
 	@functools.wraps(view)
 	def wrapped_view(**kwargs):
+		if not request.is_json:
+			abort(400, description='Only json requests are accepted')
+
 		token = request.headers.get('DC-Token')
 		if token is None:
 			abort(401, description='Not authorized')
