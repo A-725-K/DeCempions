@@ -10,11 +10,11 @@ from flask import abort, jsonify, make_response, request
 def import_teams():
 	try:
 		data = request.get_json()
-		team_repo = TeamRepository()
 
+		team_repo = TeamRepository()
 		for item in data:
 			err = team_repo.create_team(item['team_name'])
-			if err: raise Exception(err)
+			if err is not None: raise Exception(err)
 
 	except Exception as ex:
 		abort(400, description=f'Error: {str(ex)}')
