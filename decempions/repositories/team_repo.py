@@ -2,6 +2,7 @@ from decempions.database import connection
 
 class TeamRepository:
 	_insert_query = 'INSERT INTO Team(name) VALUES (?)'
+	_find_id_by_team_name = 'SELECT id FROM Team WHERE name = ?'
 # 	_update_result = '''
 # UPDATE SET
 # 	? = ?+1,
@@ -20,3 +21,9 @@ class TeamRepository:
 			return f'Team {team_name} already exists'
 
 		return None
+
+
+	def find_id_by_team_name(self, team_name):
+		db = connection.get_db()
+		row = db.execute(self._find_id_by_team_name, (team_name,)).fetchone()
+		return row['id']
