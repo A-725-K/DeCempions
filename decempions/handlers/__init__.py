@@ -20,3 +20,4 @@ from .login import *
 from .logout import *
 from .home import *
 from .import_teams import *
+from .import_league import *
