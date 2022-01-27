@@ -11,7 +11,8 @@ ROUTES = {
 }
 
 ADMIN_ROUTES = {
-	'IMPORT_TEAMS': '/import-teams'
+	'IMPORT_TEAMS': '/import-teams',
+	'IMPORT_LEAGUE': '/import-league',
 }
 
 TEMPLATES = {
