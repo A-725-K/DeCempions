@@ -14,7 +14,7 @@ def import_teams():
 
 		team_repo = TeamRepository()
 		for team in data:
-			err = check_str(team)
+			err = check_str(team, 'team_name')
 			if err is not None: raise Exception(err)
 			err = team_repo.create_team(team['team_name'])
 			if err is not None: raise Exception(err)

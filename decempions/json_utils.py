@@ -1,4 +1,7 @@
+import re
+
 from .constants import SETTINGS
+
 
 def check_str(dic, key):
 	string = dic.get(key)
@@ -21,8 +24,9 @@ def check_date(dic, key):
 	return None
 
 
-def check_int(dic, key):
+def check_int(dic, key, min_int=None):
 	i = dic.get(key)
-	if i is None or type(i) is not int or i < 1:
+	if i is None or type(i) is not int:
 		return f'{key} is not in the correct format'
+	if min_int is not None and i < min_int: return f'{key} is out of range'
 	return None

@@ -1,16 +1,13 @@
-import re
-import json
-
 from . import admin_bp
 from decempions.json_utils import check_int, check_str, check_date
 from decempions.auth_utils import is_admin_request
-from decempions.constants import ADMIN_ROUTES, HTTP_METHODS, SETTINGS
+from decempions.constants import ADMIN_ROUTES, HTTP_METHODS
 from decempions.repositories.match_repo import MatchRepository
 from flask import abort, jsonify, make_response, request
 
 
 def _validate_match(match):
-	err = check_int(match, 'week')
+	err = check_int(match, 'week', 1)
 	if err is not None: return err
 
 	err = check_str(match, 'home_team')
