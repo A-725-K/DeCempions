@@ -13,6 +13,7 @@ ROUTES = {
 ADMIN_ROUTES = {
 	'IMPORT_TEAMS': '/import-teams',
 	'IMPORT_LEAGUE': '/import-league',
+	'IMPORT_WEEK_RESULTS': '/import-week-results'
 }
 
 TEMPLATES = {
@@ -26,4 +27,5 @@ SETTINGS = {
 	'MAX_LEN': 50,
 	'DATE_FMT': r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}$',
 	'DATE_LEN': 23,
+	'MIN_GOAL': 0,
 }
