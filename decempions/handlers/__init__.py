@@ -21,3 +21,4 @@ from .logout import *
 from .home import *
 from .import_teams import *
 from .import_league import *
+from .import_week_results import *
