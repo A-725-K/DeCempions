@@ -11,22 +11,30 @@
 			<div class="first-cell">POSITION</div>
 			<div class="cell">TEAM</div>
 			<div class="cell">POINTS</div>
+			<div class="cell hide-cell-md">MATCHES</div>
 			<div class="cell hide-cell-md">WON</div>
 			<div class="cell hide-cell-sm">TIE</div>
 			<div class="cell hide-cell-sm">LOST</div>
-			<div class="cell hide-cell-md">GOAL SCORED</div>
+			<div class="cell hide-cell-sm">GOAL SCORED</div>
 			<div class="cell hide-cell-sm">GOAL CONCEDED</div>
 			<div class="cell hide-cell-md">GOAL DIFF</div>
 		</div>
 		{% for team in standing %}
-			<div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid; padding: 1rem; margin-bottom: 0.5rem; width: 90%">
+			{% if loop.index < 5 %}
+				<div style="background-color: rgba(0,255,0,0.2); display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid; padding: 1rem; margin-bottom: 0.5rem; width: 90%">
+			{% elif loop.index > 17 %}
+				<div style="background-color: rgba(255,0,0,0.2); display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid; padding: 1rem; margin-bottom: 0.5rem; width: 90%">
+			{% else %}
+				<div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid; padding: 1rem; margin-bottom: 0.5rem; width: 90%">
+			{% endif %}
 				<div class="first-cell">{{ loop.index }}</div>
 				<div class="cell">{{ team['name'] }}</div>
 				<div class="cell">{{ team['points'] }}</div>
+				<div class="cell hide-cell-md" >{{ team['match_played'] }}</div>
 				<div class="cell hide-cell-md">{{ team['won'] }}</div>
 				<div class="cell hide-cell-sm">{{ team['tie'] }}</div>
 				<div class="cell hide-cell-sm">{{ team['lost'] }}</div>
-				<div class="cell hide-cell-md">{{ team['goal_scored'] }}</div>
+				<div class="cell hide-cell-sm">{{ team['goal_scored'] }}</div>
 				<div class="cell hide-cell-sm">{{ team['goal_conceded'] }}</div>
 				<div class="cell hide-cell-md">{{ team['goal_diff'] }}</div>
 			</div>

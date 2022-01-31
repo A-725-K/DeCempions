@@ -25,9 +25,15 @@ SELECT
 	lost,
 	goal_scored,
 	goal_conceded,
- 	(goal_scored-goal_conceded) AS goal_diff
+ 	(goal_scored-goal_conceded) AS goal_diff,
+	match_played
 FROM Team
-ORDER BY points DESC, won DESC, goal_scored DESC, goal_diff ASC
+ORDER BY
+	points DESC,
+	won DESC,
+	goal_scored DESC,
+	goal_conceded ASC,
+	goal_diff ASC
 '''
 
 	def create_team(self, team_name):

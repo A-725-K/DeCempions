@@ -7,7 +7,7 @@ from decempions.repositories.team_repo import TeamRepository
 
 @game_bp.route(ROUTES['STANDING'], methods=(HTTP_METHODS['GET'],))
 @login_required
-def standings():
+def standing():
 	team_repo = TeamRepository()
 	standing = team_repo.get_standing()
 	return render_template(TEMPLATES['STANDING'], standing=standing)
