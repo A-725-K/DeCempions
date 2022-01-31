@@ -8,6 +8,7 @@ ROUTES = {
 	'LOGIN': '/login',
 	'LOGOUT': '/logout',
 	'HOME': '/home',
+	'STANDING': '/standing',
 }
 
 ADMIN_ROUTES = {
@@ -20,6 +21,7 @@ TEMPLATES = {
 	'REGISTER': 'auth/register.html',
 	'LOGIN': 'auth/login.html',
 	'HOME': 'home.html',
+	'STANDING': 'game/standing.html'
 }
 
 SETTINGS = {
