@@ -5,28 +5,30 @@
 {% endblock %}
 
 {% block content %}
-	<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 80%; border: 1px solid; margin: auto;">
-		<h1 style="color: red; background-color: yellow; ">Serie A</h1>
-		<div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid; padding: 1rem; margin-bottom: 1rem; width: 90%">
-			<div style="text-align: center; width: 12.5%;">TEAM</div>
-			<div style="text-align: center; width: 12.5%;">POINTS</div>
-			<div style="text-align: center; width: 12.5%;">WON</div>
-			<div style="text-align: center; width: 12.5%;">TIE</div>
-			<div style="text-align: center; width: 12.5%;">LOST</div>
-			<div style="text-align: center; width: 12.5%;">GOAL SCORED</div>
-			<div style="text-align: center; width: 12.5%;">GOAL CONCEDED</div>
-			<div style="text-align: center; width: 12.5%;">GOAL DIFFERENCE</div>
+	<div style="standing-box">
+		<h1 style="color: red; background-color: yellow; width: 90%;">Serie A</h1>
+		<div class="row">
+			<div class="first-cell">POSITION</div>
+			<div class="cell">TEAM</div>
+			<div class="cell">POINTS</div>
+			<div class="cell hide-cell-md">WON</div>
+			<div class="cell hide-cell-sm">TIE</div>
+			<div class="cell hide-cell-sm">LOST</div>
+			<div class="cell hide-cell-md">GOAL SCORED</div>
+			<div class="cell hide-cell-sm">GOAL CONCEDED</div>
+			<div class="cell hide-cell-md">GOAL DIFF</div>
 		</div>
 		{% for team in standing %}
 			<div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid; padding: 1rem; margin-bottom: 0.5rem; width: 90%">
-				<div style="text-align: center; width: 12.5%;">{{ team['name'] }}</div>
-				<div style="text-align: center; width: 12.5%;">{{ team['points'] }}</div>
-				<div style="text-align: center; width: 12.5%;">{{ team['won'] }}</div>
-				<div style="text-align: center; width: 12.5%;">{{ team['tie'] }}</div>
-				<div style="text-align: center; width: 12.5%;">{{ team['lost'] }}</div>
-				<div style="text-align: center; width: 12.5%;">{{ team['goal_scored'] }}</div>
-				<div style="text-align: center; width: 12.5%;">{{ team['goal_conceded'] }}</div>
-				<div style="text-align: center; width: 12.5%;">{{ team['goal_diff'] }}</div>
+				<div class="first-cell">{{ loop.index }}</div>
+				<div class="cell">{{ team['name'] }}</div>
+				<div class="cell">{{ team['points'] }}</div>
+				<div class="cell hide-cell-md">{{ team['won'] }}</div>
+				<div class="cell hide-cell-sm">{{ team['tie'] }}</div>
+				<div class="cell hide-cell-sm">{{ team['lost'] }}</div>
+				<div class="cell hide-cell-md">{{ team['goal_scored'] }}</div>
+				<div class="cell hide-cell-sm">{{ team['goal_conceded'] }}</div>
+				<div class="cell hide-cell-md">{{ team['goal_diff'] }}</div>
 			</div>
 		{% endfor %}
 	</div>
