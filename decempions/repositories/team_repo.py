@@ -1,5 +1,6 @@
 from decempions.database import connection
 
+
 class TeamRepository:
 	_insert_query = 'INSERT INTO Team(name) VALUES (?)'
 	_find_id_by_team_name = 'SELECT id FROM Team WHERE name = ?'
@@ -15,11 +16,19 @@ SET
 	match_played = match_played + 1
 WHERE id = ?
 	'''
-# 	_get_standing = '''
-# SELECT name, points, won, goal_scored, (goal_scored-goal_conceded) AS goal_diff
-# FROM Team
-# ORDER BY points, won, goal_scored, goal_diff DESC
-# '''
+	_get_standing = '''
+SELECT
+	name,
+	points,
+	won,
+	tie,
+	lost,
+	goal_scored,
+	goal_conceded,
+ 	(goal_scored-goal_conceded) AS goal_diff
+FROM Team
+ORDER BY points DESC, won DESC, goal_scored DESC, goal_diff ASC
+'''
 
 	def create_team(self, team_name):
 		db = connection.get_db()
@@ -52,3 +61,9 @@ WHERE id = ?
 			return 'Error in updating team stats'
 
 		return None
+
+
+	def get_standing(self):
+		db = connection.get_db()
+		rows = db.execute(self._get_standing).fetchall()
+		return rows
