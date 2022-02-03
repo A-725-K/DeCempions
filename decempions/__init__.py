@@ -35,6 +35,6 @@ def build_server(test_config=None):
 	server.register_blueprint(handlers.auth_bp)
 	server.register_blueprint(handlers.game_bp)
 	server.register_blueprint(handlers.admin_bp)
+	server.register_blueprint(handlers.user_bp)
 
 	return server
-
