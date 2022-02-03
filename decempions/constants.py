@@ -9,19 +9,21 @@ ROUTES = {
 	'LOGOUT': '/logout',
 	'HOME': '/home',
 	'STANDING': '/standing',
+	'EDIT': '/edit',
 }
 
 ADMIN_ROUTES = {
 	'IMPORT_TEAMS': '/import-teams',
 	'IMPORT_LEAGUE': '/import-league',
-	'IMPORT_WEEK_RESULTS': '/import-week-results'
+	'IMPORT_WEEK_RESULTS': '/import-week-results',
 }
 
 TEMPLATES = {
 	'REGISTER': 'auth/register.html',
 	'LOGIN': 'auth/login.html',
 	'HOME': 'home.html',
-	'STANDING': 'game/standing.html'
+	'STANDING': 'game/standing.html',
+	'USER_EDIT': 'profile/user.html',
 }
 
 SETTINGS = {
