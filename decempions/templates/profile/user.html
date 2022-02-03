@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}User Profile{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+	<h1 style="background-color: red; color: yellow;">Edit Profile</h1>
+	<form method="post">
+		<div>Username ===> {{ user['username'] }}</div><br>
+		<label for="first_name">First Name</label>
+    <input id="first_name" type="text" name="first_name" value="{{ request.form['first_name'] or user['first_name'] or '' }}"><br>
+		<label for="last_name">Last Name</label>
+    <input id="last_name" type="last_name" name="last_name" value="{{ request.form['last_name'] or user['last_name'] or '' }}"><br>
+		<label>Date of birth</label>
+		<select id="day" name="day">
+			{% for i in range(31) %}
+				 <option value="{{ i+1 }}">{{ i+1 }}</option>
+			{% endfor %}
+		</select>
+		<select id="month" name="month">
+			<option value="1">Jan</option>
+			<option value="2">Feb</option>
+			<option value="3">Mar</option>
+			<option value="4">Apr</option>
+			<option value="5">May</option>
+			<option value="6">Jun</option>
+			<option value="7">Jul</option>
+			<option value="8">Aug</option>
+			<option value="9">Sep</option>
+			<option value="10">Oct</option>
+			<option value="11">Nov</option>
+			<option value="12">Dec</option>
+		</select>
+		<select id="year" name="year">
+			{% for i in range(1930, 2031) %}
+				 <option value="{{ i }}">{{ i }}</option>
+			{% endfor %}
+		</select>
+		<br>
+		<input type="submit" value="Update Info">
+{% endblock %}
