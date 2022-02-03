@@ -49,4 +49,4 @@ def init_db_handler():
 @with_appcontext
 def init_db_command():
 	init_db_handler()
-	click.echo('[!!] Database initialized')
+	click.echo('[!!] Database initialized\n')

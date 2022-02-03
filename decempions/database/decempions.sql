@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS User (
 	points 				INTEGER NOT NULL DEFAULT 0,
 	next_match 		INTEGER NOT NULL DEFAULT 0,
 	match_played 	INTEGER NOT NULL DEFAULT 0,
+	date_of_birth DATE,
 	-- pennant 		TEXT, -- path to the picture
 	created_at 		TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
