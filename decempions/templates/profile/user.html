@@ -33,7 +33,7 @@
 			<option value="12">Dec</option>
 		</select>
 		<select id="year" name="year">
-			{% for i in range(1930, 2031) %}
+			{% for i in range(year, 1930, -1) %}
 				 <option value="{{ i }}">{{ i }}</option>
 			{% endfor %}
 		</select>
