@@ -1,10 +1,14 @@
 from . import user_bp
+from datetime import datetime
 from decempions.auth_utils import login_required
 from decempions.constants import ROUTES, HTTP_METHODS, TEMPLATES
 from decempions.repositories.user_repo import UserRepository
+from decempions.user_utils import check_name, check_dob
 from flask import (
 	abort, g, flash, jsonify, make_response, render_template, request
 )
+
+
 
 @user_bp.route(
 	ROUTES['EDIT'],
@@ -14,6 +18,7 @@ from flask import (
 def edit():
 	user_repo = UserRepository()
 	user = user_repo.find_user_by_username(g.username, all_fields=True)
+	curr_year = datetime.now().year
 	print(f'g.username = {g.username}\nuser = {user["username"]}')
 
 	if request.method == HTTP_METHODS['POST']:
@@ -21,7 +26,7 @@ def edit():
 		if err:
 			flash(err)
 
-	return render_template(TEMPLATES['USER_EDIT'], user=user)
+	return render_template(TEMPLATES['USER_EDIT'], user=user, year=curr_year)
 
 
 def handle_post(user):
@@ -30,5 +35,12 @@ def handle_post(user):
 	day = request.form['day']
 	month = request.form['month']
 	year = request.form['year']
+
+	err = check_name(first_name, 'First name')
+	if err: return err
+	err = check_name(first_name, 'Last name')
+	if err: return err
+	err = check_dob(day, month, year)
+	if err: return err
 
 	return None

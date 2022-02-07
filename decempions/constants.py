@@ -32,4 +32,5 @@ SETTINGS = {
 	'DATE_FMT': r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}$',
 	'DATE_LEN': 23,
 	'MIN_GOAL': 0,
+	'DOB_FMT': '%Y-%m-%d',
 }
