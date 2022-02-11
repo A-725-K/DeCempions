@@ -23,16 +23,16 @@ CREATE TABLE IF NOT EXISTS User (
 	points 				INTEGER NOT NULL DEFAULT 0,
 	next_match 		INTEGER NOT NULL DEFAULT 0,
 	match_played 	INTEGER NOT NULL DEFAULT 0,
-	date_of_birth DATE,
+	date_of_birth TIMESTAMP,
 	my_team				INTEGER,
 	-- pennant 		TEXT, -- path to the picture
 	created_at 		TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 	-- ADMIN USER
 	is_admin			BOOLEAN NOT NULL DEFAULT FALSE,
-	token					TEXT
+	token					TEXT,
 
-	FOREIGN KEY(my_team) REFERENCES Team ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY(my_team) REFERENCES Team ON UPDATE CASCADE ON DELETE CASCADE
 );
 CREATE UNIQUE INDEX IF NOT EXISTS user_username_idx ON User(username);
 CREATE UNIQUE INDEX IF NOT EXISTS user_email_idx 		ON User(email);
