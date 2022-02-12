@@ -56,8 +56,25 @@ def check_name(name, field):
 
 
 def check_dob(day, month, year):
+	print('---', day, month, year)
+	if (day is None or day == '') and \
+		(month is None or month == '') and \
+		(year is None or year == ''): return None
 	try:
 		datetime.strptime(f'{year}-{month}-{day}', SETTINGS['DOB_FMT'])
 	except ValueError:
 		return 'Date is not correct'
 	return None
+
+
+def check_team(team_id, team_repo=None):
+	if team_id is None or team_id == '': return None
+
+	team_id = int(team_id)
+	if team_id <= 0: return 'Team id is not valid'
+	if team_repo is None: team_repo = TeamRepository()
+	team = team_repo.find_team_by_id(team_id)
+	if team is None: return 'Team not found'
+
+	return None
+
