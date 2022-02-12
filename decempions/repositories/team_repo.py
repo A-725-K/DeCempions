@@ -4,6 +4,8 @@ from decempions.database import connection
 class TeamRepository:
 	_insert_query = 'INSERT INTO Team(name) VALUES (?)'
 	_find_id_by_team_name = 'SELECT id FROM Team WHERE name = ?'
+	_find_team_by_id = 'SELECT name FROM Team WHERE id = ?'
+	_find_teams_names_and_ids = 'SELECT id, name FROM Team'
 	_update_match_result = '''
 UPDATE Team
 SET
@@ -73,3 +75,15 @@ ORDER BY
 		db = connection.get_db()
 		rows = db.execute(self._get_standing).fetchall()
 		return rows
+
+
+	def find_teams_names_and_ids(self):
+		db = connection.get_db()
+		rows = db.execute(self._find_teams_names_and_ids).fetchall()
+		return rows
+
+
+	def find_team_by_id(self, id):
+		db = connection.get_db()
+		row = db.execute(self._find_team_by_id, (id,)).fetchone()
+		return row['name']

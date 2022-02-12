@@ -11,6 +11,15 @@ VALUES (?, ?, ?, ?, ?)
 	_find_by_username_all = 'SELECT * FROM User WHERE username = ?'
 	_find_by_email = 'SELECT username, password FROM User WHERE email = ?'
 	_find_admin_by_token = 'SELECT is_admin FROM User WHERE token = ?'
+	_update_user = '''
+UPDATE User
+SET
+	first_name = ?,
+	last_name = ?,
+	date_of_birth = ?,
+	my_team = ?
+WHERE id = ?
+'''
 
 	def create_user(self, username, password, email, first_name, last_name):
 		db = connection.get_db()
@@ -43,3 +52,18 @@ VALUES (?, ?, ?, ?, ?)
 	def find_admin_by_token(self, token):
 		db = connection.get_db()
 		return db.execute(self._find_admin_by_token, (token,)).fetchone()
+
+
+	def update_user(self, id, first_name, last_name, dob, team):
+		db = connection.get_db()
+		try:
+			db.execute(
+				self._update_user,
+				(first_name, last_name, dob, team, id,)
+			)
+			db.commit()
+		except db.IntegrityError as e:
+			print(str(e))
+			return f'Cannot update user'
+
+		return None
