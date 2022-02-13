@@ -19,7 +19,13 @@ SET
 	date_of_birth = ?,
 	my_team = ?
 WHERE id = ?
-'''
+	'''
+	_get_ranking = '''
+SELECT username, u.points, u.matches_played, name
+FROM User u
+JOIN Team t ON my_team = t.id
+ORDER BY u.points DESC
+	'''
 
 	def create_user(self, username, password, email, first_name, last_name):
 		db = connection.get_db()
@@ -67,3 +73,8 @@ WHERE id = ?
 			return f'Cannot update user'
 
 		return None
+
+
+	def get_ranking(self):
+		db = connection.get_db()
+		return db.execute(self._get_ranking).fetchall()
