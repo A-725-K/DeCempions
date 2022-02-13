@@ -9,6 +9,7 @@ ROUTES = {
 	'LOGOUT': '/logout',
 	'HOME': '/home',
 	'STANDING': '/standing',
+	'RANKING': '/ranking',
 	'EDIT': '/edit',
 }
 
@@ -23,6 +24,7 @@ TEMPLATES = {
 	'LOGIN': 'auth/login.html',
 	'HOME': 'home.html',
 	'STANDING': 'game/standing.html',
+	'RANKING': 'game/ranking.html',
 	'USER_EDIT': 'profile/user.html',
 }
 
