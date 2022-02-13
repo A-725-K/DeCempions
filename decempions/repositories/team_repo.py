@@ -15,7 +15,7 @@ SET
 	goal_scored = goal_scored + ?,
 	goal_conceded = goal_conceded + ?,
 	points = points + ?,
-	match_played = match_played + 1
+	matches_played = matches_played + 1
 WHERE id = ?
 	'''
 	_get_standing = '''
@@ -28,7 +28,7 @@ SELECT
 	goal_scored,
 	goal_conceded,
  	(goal_scored-goal_conceded) AS goal_diff,
-	match_played
+	matches_played
 FROM Team
 ORDER BY
 	points DESC,

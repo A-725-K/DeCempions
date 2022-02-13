@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-
-
 {% block header %}
 	<link rel="stylesheet" href="{{ url_for('static', filename='standing.css') }}">
 	<h1>{% block title %}Standing{% endblock %}</h1>
@@ -31,9 +29,9 @@
 				<div class="row-common">
 			{% endif %}
 				<div class="first-cell">{{ loop.index }}</div>
-				<div class="cell">{{ team['name'] }}</div>
+				<div class="cell"><i>{{ team['name'].title() }}</i></div>
 				<div class="cell">{{ team['points'] }}</div>
-				<div class="cell hide-cell-md" >{{ team['match_played'] }}</div>
+				<div class="cell hide-cell-md" >{{ team['matches_played'] }}</div>
 				<div class="cell hide-cell-md">{{ team['won'] }}</div>
 				<div class="cell hide-cell-sm">{{ team['tie'] }}</div>
 				<div class="cell hide-cell-sm">{{ team['lost'] }}</div>

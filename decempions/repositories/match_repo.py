@@ -4,6 +4,7 @@ from decempions.constants import SETTINGS
 from decempions.database import connection
 from .team_repo import TeamRepository
 
+
 class MatchRepository:
 	_insert_query = '''
 INSERT INTO Match(week, match_date, home_team, out_team) VALUES (?, ?, ?, ?)
