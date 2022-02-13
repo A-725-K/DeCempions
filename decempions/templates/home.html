@@ -6,15 +6,10 @@
 
 {% block content %}
 	<h1 style="color: red; background-color: yellow;">Hello!</h1>
-	<a href="{{ url_for('game.standing') }}">STANDING</a>
-	<br>
-	{# <a href="{{ url_for('game.insert_result') }}">INSERT RESULT</a> #}
-	<br>
-	<a href="{{ url_for('user.edit') }}">PROFILE</a>
-	<br>
-	{# <a href="{{ url_for('game.ranking') }}">RANKING</a> #}
-	<br>
-	{# <a href="{{ url_for('game.past_matches') }}">PAST MATCHES</a> #}
-	<br>
-	{# <a href="{{ url_for('game.next_matches') }}">NEXT MATCHES</a> #}
+	<div><a href="{{ url_for('game.standing') }}">STANDING</a></div>
+	{# <div><a href="{{ url_for('game.insert_result') }}">INSERT RESULT</a></div> #}
+	<div><a href="{{ url_for('user.edit') }}">PROFILE</a></div>
+	<div><a href="{{ url_for('game.ranking') }}">RANKING</a></div>
+	{# <div><a href="{{ url_for('game.past_matches') }}">PAST MATCHES</a></div> #}
+	{# <div><a href="{{ url_for('game.next_matches') }}">NEXT MATCHES</a></div> #}
 {% endblock %}
