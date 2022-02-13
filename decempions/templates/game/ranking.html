@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='standing.css') }}">
+	<h1>{% block title %}Ranking{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+	<div style="ranking-box">
+		<h1 style="color: red; background-color: yellow; width: 90%;">Players</h1>
+		<div class="row">
+			<div class="first-cell">POSITION</div>
+			<div class="cell">USER</div>
+			<div class="cell">POINTS</div>
+			<div class="cell hide-cell-md">MATCHES</div>
+			<div class="cell hide-cell-md">TEAM</div>
+		</div>
+		{% for user in ranking %}
+		<div class="row-common">
+			<div class="first-cell">{{ loop.index }}</div>
+			<div class="cell"><i>{{ user['username'] }}</i></div>
+			<div class="cell">{{ user['points'] }}</div>
+			<div class="cell">{{ user['matches_played'] }}</div>
+			<div class="cell">{{ user['name'].title() }}</div>
+		</div>
+		{% endfor %}
+	</div>
+{% endblock %}

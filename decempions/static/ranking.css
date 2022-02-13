@@ -1,0 +1,4 @@
+.row { display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid; padding: 1rem; margin-bottom: 1rem; width: 90%; }
+.row-common { display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid; padding: 1rem; margin-bottom: 0.5rem; width: 90%; }
+
+.ranking-box { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 80%; border: 1px solid red; margin: auto; }
