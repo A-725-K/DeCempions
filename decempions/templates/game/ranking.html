@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-	<link rel="stylesheet" href="{{ url_for('static', filename='standing.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='ranking.css') }}">
 	<h1>{% block title %}Ranking{% endblock %}</h1>
 {% endblock %}
 
@@ -16,13 +16,17 @@
 			<div class="cell hide-cell-md">TEAM</div>
 		</div>
 		{% for user in ranking %}
-		<div class="row-common">
-			<div class="first-cell">{{ loop.index }}</div>
-			<div class="cell"><i>{{ user['username'] }}</i></div>
-			<div class="cell">{{ user['points'] }}</div>
-			<div class="cell">{{ user['matches_played'] }}</div>
-			<div class="cell">{{ user['name'].title() }}</div>
-		</div>
+			{% if user['username'] == g.username %}
+				<div class="row-common user-row">
+			{% else %}
+				<div class="row-common">
+			{% endif %}
+				<div class="first-cell">{{ loop.index }}</div>
+				<div class="cell"><i>{{ user['username'] }}</i></div>
+				<div class="cell">{{ user['points'] }}</div>
+				<div class="cell">{{ user['matches_played'] }}</div>
+				<div class="cell">{{ user['name'].title() }}</div>
+			</div>
 		{% endfor %}
 	</div>
 {% endblock %}
