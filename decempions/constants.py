@@ -11,6 +11,7 @@ ROUTES = {
 	'STANDING': '/standing',
 	'RANKING': '/ranking',
 	'EDIT': '/edit',
+	'LEAGUE': '/league',
 }
 
 ADMIN_ROUTES = {
@@ -26,6 +27,7 @@ TEMPLATES = {
 	'STANDING': 'game/standing.html',
 	'RANKING': 'game/ranking.html',
 	'USER_EDIT': 'profile/user.html',
+	'LEAGUE': 'game/league.html',
 }
 
 SETTINGS = {

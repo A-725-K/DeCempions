@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header %}
+	{# <link rel="stylesheet" href="{{ url_for('static', filename='league.css') }}"> #}
+	<h1>{% block title %}League{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+	<div class="">
+		<span>INDEX</span>
+		<span>WEEK</span>
+		<span>DATE</span>
+		<span>HOME TEAM</span>
+		<span>OUT TEAM</span>
+		<span>RESULT</span>
+	</div>
+	{% for match in league %}
+		{% if match['week'] == next_week %}
+			<div style="background-color: cyan">
+		{% else %}
+			<div class="">
+		{% endif %}
+			<span>{{ loop.index }}</span>
+			<span>{{ match['week'] }}</span>
+			<span>{{ match['match_date'] }}</span>
+			<span>{{ match['homeT'] }}</span>
+			<span>{{ match['outT'] }}</span>
+			<span>{{ match['goal_home'] }}-{{ match['goal_out']}}</span>
+		</div>
+	{% endfor %}
+{% endblock %}

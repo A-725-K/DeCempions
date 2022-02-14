@@ -31,3 +31,4 @@ from .import_week_results import *
 from .standing import *
 from .edit_user import *
 from .ranking import *
+from .league import *
