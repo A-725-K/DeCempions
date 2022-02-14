@@ -15,7 +15,21 @@ SELECT id FROM Match WHERE week = ? AND home_team = ? AND out_team = ?
 	_set_result = '''
 UPDATE Match SET goal_home = ?, goal_out = ?, result = ? WHERE id = ?
 	'''
-
+	_get_league = '''
+SELECT ht.name AS homeT, ot.name as outT, match_date, goal_home, goal_out, week
+FROM Match
+JOIN Team ht ON home_team = ht.id
+JOIN Team ot ON out_team = ot.id
+ORDER BY week ASC
+	'''
+	_get_next_week = '''
+SELECT week, SUM(goal_home) AS sgh, SUM(goal_out) AS sgo
+FROM Match
+GROUP BY week
+HAVING sgh IS NULL AND sgo IS NULL
+ORDER BY week  ASC
+LIMIT 1
+	'''
 
 	def create_match(self, match):
 		db = connection.get_db()
@@ -64,3 +78,14 @@ UPDATE Match SET goal_home = ?, goal_out = ?, result = ? WHERE id = ?
 			return 'Error in setting the result of the match'
 
 		return None
+
+
+	def get_league(self):
+		db = connection.get_db()
+		return db.execute(self._get_league).fetchall()
+
+
+	def get_next_week(self):
+		db = connection.get_db()
+		row = db.execute(self._get_next_week).fetchone()
+		return row['week']
