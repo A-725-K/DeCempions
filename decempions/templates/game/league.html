@@ -22,7 +22,7 @@
 		{% endif %}
 			<span>{{ loop.index }}</span>
 			<span>{{ match['week'] }}</span>
-			<span>{{ match['match_date'] }}</span>
+			<span>{{ match['match_date'].strftime('%d/%m/%y') }}</span>
 			<span>{{ match['homeT'] }}</span>
 			<span>{{ match['outT'] }}</span>
 			<span>{{ match['goal_home'] }}-{{ match['goal_out']}}</span>
