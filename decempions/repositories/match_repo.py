@@ -20,14 +20,14 @@ SELECT ht.name AS homeT, ot.name as outT, match_date, goal_home, goal_out, week
 FROM Match
 JOIN Team ht ON home_team = ht.id
 JOIN Team ot ON out_team = ot.id
-ORDER BY week ASC
+ORDER BY week DESC
 	'''
 	_get_next_week = '''
 SELECT week, SUM(goal_home) AS sgh, SUM(goal_out) AS sgo
 FROM Match
 GROUP BY week
 HAVING sgh IS NULL AND sgo IS NULL
-ORDER BY week  ASC
+ORDER BY week ASC
 LIMIT 1
 	'''
 

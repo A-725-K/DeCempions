@@ -6,8 +6,7 @@
 {% endblock %}
 
 {% block content %}
-	<div class="">
-		<span>INDEX</span>
+	<div>
 		<span>WEEK</span>
 		<span>DATE</span>
 		<span>HOME TEAM</span>
@@ -18,14 +17,13 @@
 		{% if match['week'] == next_week %}
 			<div style="background-color: cyan">
 		{% else %}
-			<div class="">
+			<div>
 		{% endif %}
-			<span>{{ loop.index }}</span>
 			<span>{{ match['week'] }}</span>
 			<span>{{ match['match_date'].strftime('%d/%m/%y') }}</span>
 			<span>{{ match['homeT'] }}</span>
 			<span>{{ match['outT'] }}</span>
-			<span>{{ match['goal_home'] }}-{{ match['goal_out']}}</span>
+			<span>{{ match['goal_home'] or '' }}-{{ match['goal_out'] or '' }}</span>
 		</div>
 	{% endfor %}
 {% endblock %}
