@@ -32,3 +32,4 @@ from .standing import *
 from .edit_user import *
 from .ranking import *
 from .league import *
+from .play_next_week import *

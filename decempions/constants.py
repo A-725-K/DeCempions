@@ -12,6 +12,7 @@ ROUTES = {
 	'RANKING': '/ranking',
 	'EDIT': '/edit',
 	'LEAGUE': '/league',
+	'PLAY_NEXT_WEEK': '/play-next-week',
 }
 
 ADMIN_ROUTES = {
@@ -28,6 +29,7 @@ TEMPLATES = {
 	'RANKING': 'game/ranking.html',
 	'USER_EDIT': 'profile/user.html',
 	'LEAGUE': 'game/league.html',
+	'PLAY_NEXT_WEEK': 'game/playnextweek.html'
 }
 
 SETTINGS = {
