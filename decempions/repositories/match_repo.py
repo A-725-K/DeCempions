@@ -23,12 +23,18 @@ JOIN Team ot ON out_team = ot.id
 ORDER BY week DESC
 	'''
 	_get_next_week = '''
-SELECT week, SUM(goal_home) AS sgh, SUM(goal_out) AS sgo
+SELECT DISTINCT week
 FROM Match
-GROUP BY week
-HAVING sgh IS NULL AND sgo IS NULL
+WHERE match_date >= CURRENT_DATE
 ORDER BY week ASC
 LIMIT 1
+	'''
+	_get_matches_by_week = '''
+SELECT m.id, week, ht.name AS home_name, ot.name AS out_name, result
+FROM Match AS m
+JOIN Team ht ON home_team = ht.id
+JOIN Team ot ON out_team = ot.id
+WHERE week = ?
 	'''
 
 	def create_match(self, match):
@@ -89,3 +95,9 @@ LIMIT 1
 		db = connection.get_db()
 		row = db.execute(self._get_next_week).fetchone()
 		return row['week']
+
+
+	def get_next_matches(self):
+		db = connection.get_db()
+		next_week = self.get_next_week()
+		return db.execute(self._get_matches_by_week, (next_week,)).fetchall()
