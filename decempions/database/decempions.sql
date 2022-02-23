@@ -81,7 +81,6 @@ CREATE INDEX IF NOT EXISTS match_week_idx ON Match(week);
 CREATE TABLE IF NOT EXISTS Result (
 	user_id 				INTEGER NOT NULL,
 	match_id				INTEGER NOT NULL,
-	result					TEXT NOT NULL,
 	guess_goal_home	INTEGER NOT NULL,
 	guess_goal_out	INTEGER NOT NULL,
 	created_at 			TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
