@@ -36,5 +36,6 @@ def handle_login():
 
 	session.clear()
 	session['username'] = user['username']
-	return None
+	session['user_id'] = user['id']
 
+	return None
