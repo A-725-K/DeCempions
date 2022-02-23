@@ -1,1 +1,15 @@
 .body { padding: 1rem; }
+
+/* HIDE THE ARROWS IN NUMBER FIELDS: chrome, firefox */
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+	text-align: center;
+}
+
+/* HIDE THE ARROWS IN NUMBER FIELDS: safari */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
