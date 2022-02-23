@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}PLAY NEXT WEEK{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+	<div style="display: flex; flex-direction: column; justify-content: flex-start; width: 70%; margin: auto; padding: 1rem">
+		<div style="display: flex; margin-bottom: 1rem;">
+			<div style="width: 30%; text-align: center;"><b>Home Team</b></div>
+			<div style="width: 30%; text-align: center; margin-right: 10%;"><b>Out Team</b></div>
+			<div style="width: 5%; margin-right: 5%; text-align: center;"><b>GH</b></div>
+			<div style="width: 5%; margin-right: 5%; text-align: center;"><b>GO</b></div>
+			<div style="width: 10%; text-align: center;"><b>Result</b></div>
+		</div>
+		<form method="post">
+			{% for match in matches %}
+				<div style="display: flex">
+					<div style="width: 30%; text-align: center; border-right: 1px solid black;">{{ match['home_name'].upper() }}</div>
+					<div style="width: 30%; text-align: center; margin-right: 10%;">{{ match['out_name'].upper() }}</div>
+					<div style="width: 5%; margin-right: 5%;">
+						{% if not match['result'] %}
+							<input name="guess_home" id="guess_home" type="number" style="width: 100%" required>
+						{% else %}
+							<input name="guess_home" id="guess_home" type="number" style="width: 100%" disabled>
+						{% endif %}
+					</div>
+					<div style="width: 5%; margin-right: 5%;">
+						{% if not match['result'] %}
+							<input name="guess_out" id="guess_out" type="number" style="width: 100%" required>
+						{% else %}
+							<input name="guess_out" id="guess_out" type="number" style="width: 100%" disabled>
+						{% endif %}
+					</div>
+					<div style="width: 10%; text-align: center;">{{ match['result'] or '-' }}</div>
+				</div>
+			{% endfor %}
+			<div style="display: flex; margin: auto;">
+				<input type="submit" value="Save results" style="margin: 1rem auto">
+			</div>
+		</form>
+	</div>
+{% endblock %}
