@@ -64,10 +64,6 @@ def _check_number(n, field_name):
 	return None
 
 
-## TODO:
-##  - refactor goal_home-goal_out in temlate
-##  - move styling to CSS file
-##  - implement the assignment of points to players after weekly upload
 def handle_play_next_week(user_id, matches_ids, result_repo):
 	results_to_insert = []
 	guess = {}
