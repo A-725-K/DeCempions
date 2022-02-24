@@ -7,10 +7,12 @@ class UserRepository:
 INSERT INTO User(username, password, email, first_name, last_name)
 VALUES (?, ?, ?, ?, ?)
 	'''
-	_find_by_username = 'SELECT username, password FROM User WHERE username = ?'
-	_find_by_username_all = 'SELECT * FROM User WHERE username = ?'
 	_find_by_email = 'SELECT username, password FROM User WHERE email = ?'
 	_find_admin_by_token = 'SELECT is_admin FROM User WHERE token = ?'
+	_find_by_username_all = 'SELECT * FROM User WHERE username = ?'
+	_find_by_username = '''
+SELECT id, username, password FROM User WHERE username = ?
+	'''
 	_update_user = '''
 UPDATE User
 SET
