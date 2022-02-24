@@ -1,6 +1,5 @@
 from datetime import datetime
 
-from decempions.constants import SETTINGS
 from decempions.database import connection
 from .team_repo import TeamRepository
 
