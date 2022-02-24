@@ -20,24 +20,34 @@
 					<div style="width: 30%; text-align: center; margin-right: 10%;">{{ match['out_name'].upper() }}</div>
 					<div style="width: 5%; margin-right: 5%;">
 						{% if not match['result'] %}
-							<input name="guess_home" id="guess_home" type="number" style="width: 100%" required>
+							{% if user_guess[match['id']] %}
+								<input type="number" style="width: 100%" value="{{ user_guess[match['id']]['guess_goal_home'] }}" disabled>
+							{% else %}
+								<input type="number" name="guess_home_{{ match['id'] }}" id="guess_home_{{ match['id'] }}" min="0" max="15" style="width: 100%" required>
+							{% endif %}
 						{% else %}
-							<input name="guess_home" id="guess_home" type="number" style="width: 100%" disabled>
+							<input type="number" style="width: 100%" value="X" disabled>
 						{% endif %}
 					</div>
 					<div style="width: 5%; margin-right: 5%;">
 						{% if not match['result'] %}
-							<input name="guess_out" id="guess_out" type="number" style="width: 100%" required>
+							{% if user_guess[match['id']] %}
+								<input type="number" style="width: 100%" value="{{ user_guess[match['id']]['guess_goal_out'] }}" disabled>
+							{% else %}
+								<input type="number" name="guess_out_{{ match['id'] }}" id="guess_out_{{ match['id'] }}" min="0" max="15" style="width: 100%" required>
+							{% endif %}
 						{% else %}
-							<input name="guess_out" id="guess_out" type="number" style="width: 100%" disabled>
+							<input type="number" style="width: 100%" value="X" disabled>
 						{% endif %}
 					</div>
 					<div style="width: 10%; text-align: center;">{{ match['result'] or '-' }}</div>
 				</div>
 			{% endfor %}
-			<div style="display: flex; margin: auto;">
-				<input type="submit" value="Save results" style="margin: 1rem auto">
-			</div>
+			{% if not user_guess %}
+				<div style="display: flex; margin: auto;">
+					<input type="submit" value="Save results" style="margin: 1rem auto">
+				</div>
+			{% endif %}
 		</form>
 	</div>
 {% endblock %}
