@@ -23,7 +23,7 @@
 			<span>{{ match['match_date'].strftime('%d/%m/%y') }}</span>
 			<span>{{ match['homeT'] }}</span>
 			<span>{{ match['outT'] }}</span>
-			<span>{{ match['goal_home'] or '' }}-{{ match['goal_out'] or '' }}</span>
+			<span>{{ match['goal_home'] if match['goal_home'] is not none else '' }}-{{ match['goal_out'] if match['goal_out'] is not none else '' }}</span>
 		</div>
 	{% endfor %}
 {% endblock %}
