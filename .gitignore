@@ -2,3 +2,4 @@ instance
 .env
 data
 TODO.*
+.DS_Store
