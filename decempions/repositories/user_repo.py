@@ -10,6 +10,14 @@ VALUES (?, ?, ?, ?, ?)
 	_find_by_email = 'SELECT username, password FROM User WHERE email = ?'
 	_find_admin_by_token = 'SELECT is_admin FROM User WHERE token = ?'
 	_find_by_username_all = 'SELECT * FROM User WHERE username = ?'
+	_get_users_favourite_teams = 'SELECT id, my_team FROM User'
+	_update_user_points = '''
+UPDATE User
+SET
+	points = points + ?,
+	matches_played = matches_played + 1
+WHERE id = ?
+	'''
 	_find_by_username = '''
 SELECT id, username, password FROM User WHERE username = ?
 	'''
@@ -26,8 +34,10 @@ WHERE id = ?
 SELECT username, u.points, u.matches_played, name
 FROM User u
 JOIN Team t ON my_team = t.id
+WHERE NOT u.is_admin
 ORDER BY u.points DESC
 	'''
+
 
 	def create_user(self, username, password, email, first_name, last_name):
 		db = connection.get_db()
@@ -80,3 +90,21 @@ ORDER BY u.points DESC
 	def get_ranking(self):
 		db = connection.get_db()
 		return db.execute(self._get_ranking).fetchall()
+
+
+	def get_users_favourite_teams(self):
+		db = connection.get_db()
+		return db.execute(self._get_users_favourite_teams).fetchall()
+
+
+	def update_user_points(self, user_id, points):
+		db = connection.get_db()
+		try:
+			db.execute(self._update_user_points, (points, user_id,))
+			db.commit()
+		except:
+			print(str(e))
+			return f'Cannot update user points'
+
+		return None
+
