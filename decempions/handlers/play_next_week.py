@@ -33,7 +33,6 @@ def play_next_week():
 			'guess_goal_home': res['guess_goal_home'],
 			'guess_goal_out': res['guess_goal_out'],
 		}
-	print(user_guess)
 
 	if request.method == HTTP_METHODS['POST']:
 		new_user_guess, err = handle_play_next_week(

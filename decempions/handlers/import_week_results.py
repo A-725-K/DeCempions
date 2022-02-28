@@ -1,6 +1,7 @@
 from . import admin_bp
-from decempions.json_utils import check_int, check_str
 from decempions.auth_utils import is_admin_request
+from decempions.json_utils import check_int, check_str
+from decempions.user_utils import update_players_points
 from decempions.constants import ADMIN_ROUTES, HTTP_METHODS, SETTINGS
 from decempions.repositories.match_repo import MatchRepository
 from decempions.repositories.team_repo import TeamRepository
@@ -86,7 +87,9 @@ def import_week_results():
 			err = match_repo.set_result(match_id, goal_home, goal_out, res_str)
 			if err is not None: raise Exception(err)
 
+		update_players_points(data['week'])
 	except Exception as ex:
+		print(str(ex))
 		abort(400, description=f'Error: {str(ex)}')
 
 	return make_response(jsonify('OK'), 200)
