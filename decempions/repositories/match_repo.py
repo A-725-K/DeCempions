@@ -14,6 +14,9 @@ SELECT id FROM Match WHERE week = ? AND home_team = ? AND out_team = ?
 	_set_result = '''
 UPDATE Match SET goal_home = ?, goal_out = ?, result = ? WHERE id = ?
 	'''
+	_get_matches_goals_by_week = '''
+SELECT id, goal_home, goal_out, home_team, out_team FROM Match WHERE week = ?
+	'''
 	_get_league = '''
 SELECT ht.name AS homeT, ot.name as outT, match_date, goal_home, goal_out, week
 FROM Match
@@ -100,3 +103,13 @@ WHERE week = ?
 		db = connection.get_db()
 		next_week = self.get_next_week()
 		return db.execute(self._get_matches_by_week, (next_week,)).fetchall()
+
+
+	def get_matches_ids_by_week(self, week):
+		db = connection.get_db()
+		return db.execute(self._get_matches_ids_by_week, (week,)).fetchall()
+
+
+	def get_matches_goals_by_week(self, week):
+		db = connection.get_db()
+		return db.execute(self._get_matches_goals_by_week, (week,)).fetchall()
