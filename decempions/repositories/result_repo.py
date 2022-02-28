@@ -10,6 +10,9 @@ SELECT match_id, guess_goal_home, guess_goal_out
 FROM Result
 WHERE user_id = ? AND match_id IN ({("?," * n)[:-1]})
 	'''
+	_results_by_matches_ids = lambda _, n: f'''
+SELECT * FROM Result WHERE match_id IN ({("?," * n)[:-1]})
+	'''
 
 
 	def insert_result(self, result):
@@ -32,4 +35,12 @@ WHERE user_id = ? AND match_id IN ({("?," * n)[:-1]})
 		return db.execute(
 			self._results_by_user_and_matches(len(matches_ids)),
 			(user_id, *matches_ids,),
+		).fetchall()
+
+
+	def get_results_by_matches_ids(self, matches_ids):
+		db = connection.get_db()
+		return db.execute(
+			self._results_by_matches_ids(len(matches_ids)),
+			(*matches_ids,),
 		).fetchall()
