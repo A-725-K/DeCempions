@@ -1,5 +1,6 @@
 <!doctype html>
 <title>{% block title %}{% endblock %} - DeCempions</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <link rel="shortcut icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
 <link rel="mask-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
@@ -13,7 +14,7 @@
       <li><a class="home-btn" href="{{ url_for('auth.logout') }}">Log Out</a>
     {% else %}
       <li><a class="home-btn" href="{{ url_for('auth.register') }}">Register</a>
-      <li><a class="home-btn" href="{{ url_for('auth.login') }}">Log In</a>
+      <li><a class="home-btn" href="{{ url_for('auth.login') }}">Login</a>
     {% endif %}
   </ul>
 </nav>

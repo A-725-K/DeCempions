@@ -1,0 +1,78 @@
+.login-form {
+	margin: auto;
+	margin-top: 8rem;
+	width: 30%;
+	border: 4px solid green;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	background-color: rgba(255, 255, 255, 0.6);
+}
+.login-form label {
+	margin-top: 1rem;
+	font-size: 24px;
+}
+.login-form h1 {
+	margin: auto;
+	font-size: 48px;
+}
+.login-form input {
+	font-size: 24px;
+}
+
+.login-title-bottom,
+.login-title-top {
+	display: flex;
+	justify-content: space-between;
+}
+.login-title-bottom img,
+.login-title-top img {
+	width: 4rem;
+	height: 4rem;
+}
+.login-title-bottom { margin-top: 2.5rem; }
+.login-title-top { margin-bottom: 2.5rem; }
+
+.login-btn {
+	width: 50%;
+	margin: auto;
+	margin-top: 2rem;
+	font-size: 24px;
+	background-color: white;
+  color: black;
+  border: 2px solid green;
+  padding: 8px 16px;
+	cursor: pointer;
+	font-family: fantasy;
+	text-align: center;
+}
+.login-btn:hover, .login-btn:active {
+  background-color: green;
+  color: white;
+}
+
+@media screen and (max-width: 720px) {
+	.login-form {
+		width: 60%;
+	}
+	.login-form label {
+		font-size: 18px;
+	}
+	.login-form h1 {
+		margin: auto;
+		font-size: 36px;
+	}
+	.login-form input {
+		font-size: 18px;
+	}
+
+	.login-title-bottom img,
+	.login-title-top img {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+
+	.login-btn {
+		font-size: 18px;
+	}
+}
