@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <nav>
-  <h1>DeCempions</h1>
+	<h1>DeCempions</h1>
   <ul>
     {% if g.username %}
-      <li><span><a href="{{ url_for('game.home') }}">{{ g.username }}</a></span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+      <li><span><a class="home-btn" href="{{ url_for('game.home') }}">{{ g.username }}</a></span>
+      <li><a class="home-btn" href="{{ url_for('auth.logout') }}">Log Out</a>
     {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
-      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+      <li><a class="home-btn" href="{{ url_for('auth.register') }}">Register</a>
+      <li><a class="home-btn" href="{{ url_for('auth.login') }}">Log In</a>
     {% endif %}
   </ul>
 </nav>
