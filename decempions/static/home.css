@@ -1,0 +1,39 @@
+a { color: inherit; }
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+
+.cards-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 80%;
+	margin: auto;
+	margin-top: 2rem;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  transition: 0.3s;
+	height: 16rem;
+	width: 16rem;
+	border: 2px solid green;
+	text-align: center;
+	font-size: 36px;
+	background-color: rgba(255, 255, 255, 0.6);
+}
+.card:hover {
+  box-shadow: 0 12px 20	px 0 rgba(0, 0, 0, 0.8);
+	background-color: rgba(50, 180, 50, 0.9);
+	cursor: pointer;
+}
+.card img {
+	width: 8rem;
+	height: 8rem;
+	margin: auto;
+}

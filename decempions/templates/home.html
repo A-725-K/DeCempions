@@ -1,14 +1,42 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Homepage{% endblock %}</h1>
+  <h1>{% block title %}Welcome back, {{ g.username }}{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-	<h1 style="color: red; background-color: yellow;">Hello!</h1>
-	<div><a href="{{ url_for('game.standing') }}">STANDING</a></div>
-	<div><a href="{{ url_for('game.play_next_week') }}">PLAY NEXT WEEK</a></div>
-	<div><a href="{{ url_for('user.edit') }}">PROFILE</a></div>
-	<div><a href="{{ url_for('game.ranking') }}">RANKING</a></div>
-	<div><a href="{{ url_for('game.league') }}">LEAGUE</a></div>
+	<div class="cards-container">
+		<a href="{{ url_for('game.play_next_week') }}">
+			<div class="card">
+				<img src="{{ url_for('static', filename='assets/play_next.png') }}">
+				PLAY NEXT WEEK
+			</div>
+		</a>
+		<a href="{{ url_for('game.standing') }}">
+			<div class="card">
+				<img src="{{ url_for('static', filename='assets/standing.png') }}">
+				STANDING
+			</div>
+		</a>
+		<a href="{{ url_for('game.league') }}">
+			<div class="card">
+				<img src="{{ url_for('static', filename='assets/league.png') }}">
+				LEAGUE
+			</div>
+		</a>
+	</div>
+	<div class="cards-container">
+		<a href="{{ url_for('game.ranking') }}">
+			<div class="card">
+				<img src="{{ url_for('static', filename='assets/ranking.png') }}">
+				RANKING
+			</div>
+		</a>
+		<a href="{{ url_for('user.edit') }}">
+			<div class="card">
+				<img src="{{ url_for('static', filename='assets/profile.png') }}">
+				PROFILE
+			</div>
+		</a>
+	</div>
 {% endblock %}
