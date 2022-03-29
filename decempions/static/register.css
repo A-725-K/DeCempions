@@ -1,0 +1,86 @@
+.register-container {
+	margin: auto;
+	margin-top: 8rem;
+	background-color: rgba(255, 255, 255, 0.6);
+	display: flex;
+	flex-direction: column;
+	border: 4px solid green;
+	padding: 1rem;
+	width: 60%;
+}
+.register-container h1 {
+	margin: auto;
+	font-size: 36px;
+}
+.register-container label {
+	margin-top: 1rem;
+	font-size: 24px;
+}
+.register-container input {
+	font-size: 28px;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	padding: 1rem;
+	justify-content: space-between;
+}
+
+.col {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+.col label { text-align: center; }
+
+.register-btn {
+	width: 20%;
+	margin: auto;
+	margin-top: 1rem;
+	font-size: 24px;
+	background-color: white;
+  color: black;
+  border: 2px solid green;
+  padding: 8px 16px;
+	cursor: pointer;
+	font-family: impact; /* fantasy; */
+	text-align: center;
+}
+.register-btn:hover, .register-btn:active {
+  background-color: green;
+  color: white;
+}
+
+@media screen and (max-width: 1240px) {
+	.register-container {
+		margin-top: 2rem;
+		width: 80%;
+	}
+
+	.row {
+		flex-direction: column;
+	}
+
+	.register-btn {
+		width: 45%;
+	}
+}
+
+@media screen and (max-width: 720px) {
+	.register-container label {
+		font-size: 16px;
+	}
+	.register-container h1 {
+		margin: auto;
+		font-size: 20px;
+	}
+	.register-container input {
+		font-size: 14px;
+	}
+
+	.register-btn {
+		width: 40%;
+		font-size: 16px;
+	}
+}

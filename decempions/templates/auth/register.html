@@ -1,23 +1,29 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Create new account{% endblock %}</h1>
-{% endblock %}
-
 {% block content %}
-  <form method="post">
-    <label for="username">Username*</label>
-    <input id="username" name="username" required><br>
-    <label for="password">Password*</label>
-    <input id="password" type="password" name="password" required><br>
-		<label for="repeat_password">Repeat Password*</label>
-    <input id="repeat_password" type="password" name="repeat_password" required><br>
-		<label for="email">Email*</label>
-    <input id="email" type="email" name="email" required><br>
-		<label for="first_name">First Name</label>
-    <input id="first_name" type="text" name="first_name"><br>
-		<label for="last_name">Last Name</label>
-    <input id="last_name" type="last_name" name="last_name"><br>
-    <input type="submit" value="Register">
+	<form method="post">
+		<div class="register-container">
+			<h1>Create new account</h1>
+			<div class=row>
+				<div class="col">
+					<label for="username">Username*</label>
+			    <input id="username" name="username" required>
+					<label for="password">Password*</label>
+					<input id="password" type="password" name="password" required>
+					<label for="first_name">First Name</label>
+					<input id="first_name" type="text" name="first_name">
+				</div>
+
+				<div class="col">
+					<label for="email">Email*</label>
+					<input id="email" type="email" name="email" required>
+					<label for="repeat_password">Repeat Password*</label>
+			    <input id="repeat_password" type="password" name="repeat_password" required>
+					<label for="last_name">Last Name</label>
+					<input id="last_name" type="last_name" name="last_name">
+				</div>
+			</div>
+     	<input class="register-btn" type="submit" value="Register">
+		</div>
   </form>
 {% endblock %}
