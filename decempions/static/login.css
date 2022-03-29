@@ -43,7 +43,7 @@
   border: 2px solid green;
   padding: 8px 16px;
 	cursor: pointer;
-	font-family: fantasy;
+	font-family: impact; /* fantasy; */
 	text-align: center;
 }
 .login-btn:hover, .login-btn:active {
