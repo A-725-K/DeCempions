@@ -1,13 +1,16 @@
 <!doctype html>
 <title>{% block title %}{% endblock %} - DeCempions</title>
+
 <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 <link rel="shortcut icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
 <link rel="mask-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- NAVBAR -->
 <nav>
 	<h1>DeCempions</h1>
   <ul>
@@ -21,6 +24,7 @@
   </ul>
 </nav>
 
+<!-- PAGE -->
 <section class="content">
   <header>
     {% block header %}{% endblock %}
@@ -30,3 +34,5 @@
   {% endfor %}
   {% block content %}{% endblock %}
 </section>
+
+<!-- FOOTER -->

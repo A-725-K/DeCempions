@@ -37,3 +37,33 @@ a:active { text-decoration: none; }
 	height: 8rem;
 	margin: auto;
 }
+
+@media screen and (max-width: 568px) {
+	.card {
+		width: 12rem;
+		height: 12rem;
+		font-size: 20px;
+	}
+	.card img {
+		width: 6rem;
+		height: 6rem;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.cards-container {
+		flex-direction: column;
+		align-items: center;
+		margin-top: 0;
+	}
+
+	.card {
+		width: 14rem;
+		height: 14rem;
+		font-size: 28px;
+	}
+	.card img {
+		width: 7rem;
+		height: 7rem;
+	}
+}
