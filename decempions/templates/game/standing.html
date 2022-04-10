@@ -2,12 +2,12 @@
 
 {% block header %}
 	<link rel="stylesheet" href="{{ url_for('static', filename='standing.css') }}">
-	<h1>{% block title %}Standing{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-	<div style="standing-box">
-		<h1 style="color: red; background-color: yellow; width: 90%;">Serie A</h1>
+	{# <h1 style="color: red; background-color: yellow; width: 90%;">Serie A</h1> #}
+
+	<div class="standing-box">
 		<div class="row">
 			<div class="first-cell">POSITION</div>
 			<div class="cell">TEAM</div>
