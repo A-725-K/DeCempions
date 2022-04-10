@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Welcome back, {{ g.username }}{% endblock %}</h1>
-{% endblock %}
-
 {% block content %}
+	<div class="welcome">Welcome back, {{ g.username }}!</div>
+
 	<div class="cards-container">
 		<a href="{{ url_for('game.play_next_week') }}">
 			<div class="card">

@@ -4,6 +4,13 @@ a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
 a:active { text-decoration: none; }
 
+.welcome {
+	width: auto;
+	text-align: center;
+	color: white;
+	font-size: 2rem;
+}
+
 .cards-container {
 	display: flex;
 	flex-direction: row;
@@ -65,5 +72,9 @@ a:active { text-decoration: none; }
 	.card img {
 		width: 7rem;
 		height: 7rem;
+	}
+
+	.welcome {
+		margin-bottom: 1rem;
 	}
 }
