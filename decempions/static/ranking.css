@@ -34,6 +34,10 @@
 	width: 9%;
 	margin-left: 1%;
 }
+.cell img {
+	width: 2.5rem;
+	height: 2.5rem;
+}
 
 .ranking-box {
 	display: flex;

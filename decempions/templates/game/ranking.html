@@ -29,7 +29,8 @@
 				<div class="cell"><i>{{ user['username'] }}</i></div>
 				<div class="cell">{{ user['points'] }}</div>
 				<div class="cell hide-cell">{{ user['matches_played'] }}</div>
-				<div class="cell">{{ user['name'].title() }}</div>
+				{% set fname = 'assets/teams/' + user['name'] + '.png' %}
+				<div class="cell"><img src="{{ url_for('static', filename=fname) }}"</img></div>
 			</div>
 		{% endfor %}
 	</div>
