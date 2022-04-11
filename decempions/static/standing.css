@@ -16,10 +16,11 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	border: 1px solid;
+	border: 5px solid;
 	padding: 1rem;
+	border-radius: 1rem;
 	margin-bottom: 1rem;
-	width: 90%;
+	width: 96%;
 }
 
 .standing-box {
@@ -30,8 +31,8 @@
 	margin: auto;
 	width: 80%;
 	border: 1px solid black;
-	padding: 1rem;
-	background-color: rgba(255, 255, 255, 0.65);
+	padding: 0.5rem;
+	background-color: rgba(255, 255, 255, 0.75);
 }
 
 .row-common {
@@ -39,10 +40,12 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	border: 1px solid;
+	border: 2px solid;
+	border-style: outset;
+	border-radius: 8px;
 	padding: 1rem;
 	margin-bottom: 0.5rem;
-	width: 90%;
+	width: 96%;
 }
 .first-rows { background-color: rgba(0,255,0,0.2); }
 .last-rows { background-color: rgba(255,0,0,0.2); }
@@ -59,14 +62,12 @@
 }
 
 @media screen and (max-width: 768px) {
-	.first-cell { width: 15%; }
-
 	.cell {
 		width: 15%;
 		margin-left: 2%;
 	}
-
+	.first-cell { width: 15%; }
+	.row, .row-common { width: 85% }
 	.hide-cell-sm { display: none; }
-
 	.standing-box { width: 90%; }
 }
