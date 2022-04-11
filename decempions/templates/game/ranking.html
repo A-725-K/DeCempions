@@ -2,18 +2,22 @@
 
 {% block header %}
 	<link rel="stylesheet" href="{{ url_for('static', filename='ranking.css') }}">
-	<h1>{% block title %}Ranking{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-	<div style="ranking-box">
-		<h1 style="color: red; background-color: yellow; width: 90%;">Players</h1>
+	<div class="ranking-title">
+		<img src="{{ url_for('static', filename='assets/ball.png') }}"></img>
+		Players
+		<img src="{{ url_for('static', filename='assets/ball.png') }}"></img>
+	</div>
+
+	<div class="ranking-box">
 		<div class="row">
 			<div class="first-cell">POSITION</div>
 			<div class="cell">USER</div>
 			<div class="cell">POINTS</div>
-			<div class="cell hide-cell-md">MATCHES</div>
-			<div class="cell hide-cell-md">TEAM</div>
+			<div class="cell hide-cell">MATCHES</div>
+			<div class="cell">TEAM</div>
 		</div>
 		{% for user in ranking %}
 			{% if user['username'] == g.username %}
@@ -24,7 +28,7 @@
 				<div class="first-cell">{{ loop.index }}</div>
 				<div class="cell"><i>{{ user['username'] }}</i></div>
 				<div class="cell">{{ user['points'] }}</div>
-				<div class="cell">{{ user['matches_played'] }}</div>
+				<div class="cell hide-cell">{{ user['matches_played'] }}</div>
 				<div class="cell">{{ user['name'].title() }}</div>
 			</div>
 		{% endfor %}

@@ -1,5 +1,101 @@
-.row { display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid; padding: 1rem; margin-bottom: 1rem; width: 90%; }
-.row-common { display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid; padding: 1rem; margin-bottom: 0.5rem; width: 90%; }
-.user-row { background-color: rgba(0,0,255,0.2); }
+.row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	border: 5px solid;
+	padding: 1rem;
+	border-radius: 1rem;
+	margin-bottom: 1rem;
+	width: 92%;
+}
 
-.ranking-box { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 80%; border: 1px solid red; margin: auto; }
+.row-common {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	border: 2px solid;
+	border-style: outset;
+	border-radius: 8px;
+	padding: 1rem;
+	margin-bottom: 0.5rem;
+	width: 92%;
+}
+.user-row { background-color: rgba(0, 0, 255, 0.2); }
+
+.first-cell {
+	text-align: center;
+	width: 9%;
+}
+
+.cell {
+	text-align: center;
+	width: 9%;
+	margin-left: 1%;
+}
+
+.ranking-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+	width: 80%;
+	border: 1px solid black;
+	padding: 0.5rem;
+	background-color: rgba(255, 255, 255, 0.75);
+	border-radius: 0.5rem;
+}
+
+.ranking-title {
+	color: red;
+	background-color: rgba(255, 255, 255, 0.75);
+	width: 30%;
+	margin: auto;
+	font-size: 2rem;
+	text-align: center;
+	border: 5px solid red;
+	border-radius: 1rem;
+	margin-bottom: 0.5rem;
+	font-family: cursive;
+	padding: 0.2rem 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.ranking-title img {
+	width: 2.5rem;
+	height: 2.5rem;
+}
+
+@media screen and (max-width: 480px) {
+	.first-cell { width: 30%; }
+
+	.cell {
+		width: 30%;
+		margin-left: 5%;
+	}
+
+	.hide-cell-md { display: none; }
+}
+
+@media screen and (max-width: 768px) {
+	.cell {
+		width: 15%;
+		margin-left: 2%;
+	}
+	.first-cell { width: 15%; }
+	.row, .row-common { width: 85% }
+	.hide-cell { display: none; }
+	.ranking-box { width: 90%; }
+
+	.ranking-title {
+		width: 50%;
+		font-size: 1.5rem;
+	}
+	.ranking-title img {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+}
