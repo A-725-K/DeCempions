@@ -12,6 +12,7 @@ from flask import (
 	request, url_for,
 )
 
+find_team = lambda t_id, tt: [team for team in tt if team['id'] == t_id][0]
 
 @user_bp.route(
 	ROUTES['EDIT'],
@@ -36,7 +37,8 @@ def edit():
 		user=user,
 		year=curr_year,
 		teams=teams,
-		months=MONTHS
+		months=MONTHS,
+		user_team=find_team(user['my_team'], teams)['name']
 	)
 
 

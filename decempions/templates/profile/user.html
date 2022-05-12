@@ -1,67 +1,83 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}User Profile{% endblock %}</h1>
+	<link rel="stylesheet" href="{{ url_for('static', filename='user.css') }}">
 {% endblock %}
 
 {% block content %}
-	<h1 style="background-color: red; color: yellow;">Edit Profile</h1>
 	<form method="post">
-		<div>Username ===> {{ user['username'] }}</div>
-		<div>
-			<label for="first_name">First Name</label>
-	    <input id="first_name" type="text" name="first_name" value="{{ request.form['first_name'] or user['first_name'] or '' }}">
+		<div class="form-container">
+			<h1>Edit Profile</h1>
+			<div class="two-cols">
+				<div class="userinfo">
+					<div class="separator">
+						<label>Username</label>
+						<div>{{ user['username'] }}</div>
+					</div>
+					<div class="separator">
+						<label for="first_name">First Name</label>
+						<input id="first_name" type="text" name="first_name" value="{{ request.form['first_name'] or user['first_name'] or '' }}">
+					</div>
+					<div class="separator">
+						<label for="last_name">Last Name</label>
+						<input id="last_name" type="last_name" name="last_name" value="{{ request.form['last_name'] or user['last_name'] or '' }}">
+					</div>
+					<div class="separator">
+						<label>Date of Birth</label>
+						<select id="day" name="day">
+							<option value={{ '' }}></option>
+							{% for i in range(1, 32) %}
+								{% if user['date_of_birth'].day != i %}
+									<option value="{{ i }}">{{ i }}</option>
+								 {% else %}
+									<option value="{{ i }}" selected>{{ i }}</option>
+								 {% endif %}
+							{% endfor %}
+						</select>
+						<select id="month" name="month">
+							<option value={{ '' }}></option>
+							{% for i in range(1, 13) %}
+								{% if user['date_of_birth'].month != i %}
+									<option value="{{ i }}">{{ months[i] }}</option>
+								 {% else %}
+									<option value="{{ i }}" selected>{{ months[i] }}</option>
+								 {% endif %}
+							{% endfor %}
+						</select>
+						<select id="year" name="year">
+							<option value={{ '' }}></option>
+							{% for i in range(year, 1930, -1) %}
+								{% if user['date_of_birth'].year != i %}
+								 <option value="{{ i }}">{{ i }}</option>
+								{% else %}
+								 <option value="{{ i }}" selected>{{ i }}</option>
+								{% endif %}
+							{% endfor %}
+						</select>
+					</div>
+					<div class="separator">
+						<label for="my_team">Favourite team</label>
+						<select id="my_team" name="my_team">
+							<option value={{ '' }}></option>
+							{% for team in teams %}
+								{% if team['id'] != user['my_team'] %}
+									<option value="{{ team['id'] }}">{{ team['name'].title() }}</option>
+								{% else %}
+									<option value="{{ team['id'] }}" selected>{{ team['name'].title() }}</option>
+								{% endif %}
+							{% endfor %}
+						</select>
+					</div>
+					<div class="center">
+						<input type="submit" value="Update Info">
+					</div>
+				</div>
+
+				<div class="userpic">
+					{% set fname = 'assets/teams/' + user_team + '.png' %}
+					<img src="{{ url_for('static', filename=fname) }}"></img>
+				</div>
+			</div>
 		</div>
-		<div>
-			<label for="last_name">Last Name</label>
-    	<input id="last_name" type="last_name" name="last_name" value="{{ request.form['last_name'] or user['last_name'] or '' }}">
-		</div>
-		<div>
-			<label>Date of Birth</label>
-			<select id="day" name="day">
-				<option value={{ '' }}></option>
-				{% for i in range(1, 32) %}
-					{% if user['date_of_birth'].day != i %}
-					 	<option value="{{ i }}">{{ i }}</option>
-					 {% else %}
-					 	<option value="{{ i }}" selected>{{ i }}</option>
-					 {% endif %}
-				{% endfor %}
-			</select>
-			<select id="month" name="month">
-				<option value={{ '' }}></option>
-				{% for i in range(1, 13) %}
-					{% if user['date_of_birth'].month != i %}
-					 	<option value="{{ i }}">{{ months[i] }}</option>
-					 {% else %}
-					 	<option value="{{ i }}" selected>{{ months[i] }}</option>
-					 {% endif %}
-				{% endfor %}
-			</select>
-			<select id="year" name="year">
-				<option value={{ '' }}></option>
-				{% for i in range(year, 1930, -1) %}
-					{% if user['date_of_birth'].year != i %}
-					 <option value="{{ i }}">{{ i }}</option>
-					{% else %}
-					 <option value="{{ i }}" selected>{{ i }}</option>
-					{% endif %}
-				{% endfor %}
-			</select>
-		</div>
-		<div>
-			<label for="my_team">Favourite team</label>
-			<select id="my_team" name="my_team">
-				<option value={{ '' }}></option>
-				{% for team in teams %}
-					{% if team['id'] != user['my_team'] %}
-					 	<option value="{{ team['id'] }}">{{ team['name'].title() }}</option>
-					{% else %}
-						<option value="{{ team['id'] }}" selected>{{ team['name'].title() }}</option>
-					{% endif %}
-				{% endfor %}
-			</select>
-		</div>
-		<input type="submit" value="Update Info">
 	</form>
 {% endblock %}
