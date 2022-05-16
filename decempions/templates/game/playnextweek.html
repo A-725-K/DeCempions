@@ -1,59 +1,62 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}PLAY NEXT WEEK: {{ week }}{% endblock %}</h1>
+	<link rel="stylesheet" href="{{ url_for('static', filename='playnextweek.css') }}">
 {% endblock %}
 
 {% block content %}
-	<div style="display: flex; flex-direction: column; justify-content: flex-start; width: 70%; margin: auto; padding: 1rem">
-		<div style="display: flex; margin-bottom: 1rem;">
-			<div style="width: 30%; text-align: center;"><b>Home Team</b></div>
-			<div style="width: 30%; text-align: center; margin-right: 10%;"><b>Out Team</b></div>
-			<div style="width: 5%; margin-right: 5%; text-align: center;"><b>GH</b></div>
-			<div style="width: 5%; margin-right: 5%; text-align: center;"><b>GO</b></div>
-			<div style="width: 10%; text-align: center;"><b>Result</b></div>
+	<div class="week-nr">
+  	<h1>PLAY WEEK: {{ week }}</h1>
+	</div>
+	<div class="matches-table">
+		<div class="matches-table-hd">
+			<div class="col1"><b>Home Team</b></div>
+			<div class="col2"><b>Out Team</b></div>
+			<div class="col3"><b>GH</b></div>
+			<div class="col4"><b>GO</b></div>
+			<div class="col5"><b>Result</b></div>
 		</div>
 		<form method="post">
 			{% for match in matches %}
-				<div style="display: flex">
-					<div style="width: 30%; text-align: center; border-right: 1px solid black;">{{ match['home_name'].upper() }}</div>
-					<div style="width: 30%; text-align: center; margin-right: 10%;">{{ match['out_name'].upper() }}</div>
-					<div style="width: 5%; margin-right: 5%;">
+				<div class="matches-table-tr">
+					<div class="col1 vertical-line">{{ match['home_name'].upper() }}</div>
+					<div class="col2">{{ match['out_name'].upper() }}</div>
+					<div class="col3">
 						{% if not match['result'] %}
 							{% if user_guess[match['id']] %}
-								<input type="number" style="width: 100%" value="{{ user_guess[match['id']]['guess_goal_home'] }}" disabled>
+								<input type="number" class="w100" value="{{ user_guess[match['id']]['guess_goal_home'] }}" disabled>
 							{% else %}
-								<input type="number" name="guess_home_{{ match['id'] }}" id="guess_home_{{ match['id'] }}" min="0" max="15" style="width: 100%" required>
+								<input type="number" name="guess_home_{{ match['id'] }}" id="guess_home_{{ match['id'] }}" min="0" max="15" class="w100" required>
 							{% endif %}
 						{% else %}
 							{% if user_guess[match['id']] %}
-								<input type="number" style="width: 100%" value="{{ user_guess[match['id']]['guess_goal_home'] }}" disabled>
+								<input type="number" class="w100" value="{{ user_guess[match['id']]['guess_goal_home'] }}" disabled>
 							{% else %}
-								<input type="number" value="-" style="width: 100%" disabled>
+								<input type="number" value="-" class="w100" disabled>
 							{% endif %}
 						{% endif %}
 					</div>
-					<div style="width: 5%; margin-right: 5%;">
+					<div class="col4">
 						{% if not match['result'] %}
 							{% if user_guess[match['id']] %}
-								<input type="number" style="width: 100%" value="{{ user_guess[match['id']]['guess_goal_out'] }}" disabled>
+								<input type="number" class="w100" value="{{ user_guess[match['id']]['guess_goal_out'] }}" disabled>
 							{% else %}
-								<input type="number" name="guess_out_{{ match['id'] }}" id="guess_out_{{ match['id'] }}" min="0" max="15" style="width: 100%" required>
+								<input type="number" name="guess_out_{{ match['id'] }}" id="guess_out_{{ match['id'] }}" min="0" max="15" class="w100" required>
 							{% endif %}
 						{% else %}
 							{% if user_guess[match['id']] %}
-								<input type="number" style="width: 100%" value="{{ user_guess[match['id']]['guess_goal_out'] }}" disabled>
+								<input type="number" class="w100" value="{{ user_guess[match['id']]['guess_goal_out'] }}" disabled>
 							{% else %}
-								<input type="number" value="-" style="width: 100%" disabled>
+								<input type="number" value="-" class="w100" disabled>
 							{% endif %}
 						{% endif %}
 					</div>
-					<div style="width: 10%; text-align: center;">{{ match['result'] or '-' }}</div>
+					<div class="col5">{{ match['result'] or '-' }}</div>
 				</div>
 			{% endfor %}
 			{% if not user_guess %}
-				<div style="display: flex; margin: auto;">
-					<input type="submit" value="Save results" style="margin: 1rem auto">
+				<div class="submit-container">
+					<input type="submit" value="Save results">
 				</div>
 			{% endif %}
 		</form>
