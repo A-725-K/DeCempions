@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}PLAY NEXT WEEK{% endblock %}</h1>
+  <h1>{% block title %}PLAY NEXT WEEK: {{ week }}{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
@@ -26,7 +26,11 @@
 								<input type="number" name="guess_home_{{ match['id'] }}" id="guess_home_{{ match['id'] }}" min="0" max="15" style="width: 100%" required>
 							{% endif %}
 						{% else %}
-							<input type="number" style="width: 100%" value="{{ user_guess[match['id']]['guess_goal_home'] }}" disabled>
+							{% if user_guess[match['id']] %}
+								<input type="number" style="width: 100%" value="{{ user_guess[match['id']]['guess_goal_home'] }}" disabled>
+							{% else %}
+								<input type="number" value="-" style="width: 100%" disabled>
+							{% endif %}
 						{% endif %}
 					</div>
 					<div style="width: 5%; margin-right: 5%;">
@@ -37,7 +41,11 @@
 								<input type="number" name="guess_out_{{ match['id'] }}" id="guess_out_{{ match['id'] }}" min="0" max="15" style="width: 100%" required>
 							{% endif %}
 						{% else %}
-							<input type="number" style="width: 100%" value="{{ user_guess[match['id']]['guess_goal_out'] }}" disabled>
+							{% if user_guess[match['id']] %}
+								<input type="number" style="width: 100%" value="{{ user_guess[match['id']]['guess_goal_out'] }}" disabled>
+							{% else %}
+								<input type="number" value="-" style="width: 100%" disabled>
+							{% endif %}
 						{% endif %}
 					</div>
 					<div style="width: 10%; text-align: center;">{{ match['result'] or '-' }}</div>

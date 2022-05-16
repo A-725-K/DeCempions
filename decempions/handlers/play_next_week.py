@@ -18,7 +18,7 @@ def play_next_week():
 	match_repo = MatchRepository()
 	result_repo = ResultRepository()
 
-	matches = match_repo.get_next_matches()
+	week, matches = match_repo.get_next_matches()
 	matches_ids = [m['id'] for m in matches]
 
 	user_guess_query_res = result_repo.get_results_by_user_and_matches(
@@ -45,12 +45,14 @@ def play_next_week():
 			TEMPLATES['PLAY_NEXT_WEEK'],
 			matches=matches,
 			user_guess=new_user_guess,
+			week=week,
 		)
 
 	return render_template(
 		TEMPLATES['PLAY_NEXT_WEEK'],
 		matches=matches,
 		user_guess=user_guess,
+		week=week,
 	)
 
 
