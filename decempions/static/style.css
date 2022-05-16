@@ -30,7 +30,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* NAVBAR */
 nav {
-	background: rgb(0, 0, 0, 0.8);
+	background-color: rgb(0, 0, 0, 0.8);
 	color: green;
 	display: flex;
 	align-items: center;
@@ -85,6 +85,38 @@ nav ul li a, nav ul li span {
 
 header { margin-top: 5rem; }
 
+.footer {
+	display: flex;
+	position: relative;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: rgb(0, 0, 0, 0.8);
+	color: white;
+	text-align: center;
+	padding: 0.2rem;
+	margin-top: 1.5rem;
+}
+
+.copyright, .info, .socials {
+	width: 30%;
+}
+
+.socials {
+	display: flex;
+	flex-direction: column;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+.socials i {
+	font-size: 2rem;
+	cursor: pointer;
+}
+.socials:nth-child(2) {
+	display: flex;
+	justify-content: space-evenly;
+}
+
 @media screen and (max-width: 480px) {
 	body {
 		background-attachment: fixed;
@@ -96,6 +128,11 @@ header { margin-top: 5rem; }
 		padding: 0.3rem;
 		margin-left: 0.2rem;
 	}
+
+	.copyright, .info, .socials {
+		font-size: 0.8rem;
+		margin-bottom: 0.5rem;
+	}
 }
 
 @media screen and (max-width: 340px) {
@@ -103,5 +140,11 @@ header { margin-top: 5rem; }
 		font-size: 9px;
 		padding: 0.1rem;
 		margin-left: 0.1rem;
+	}
+
+	.footer {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 	}
 }

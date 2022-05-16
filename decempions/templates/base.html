@@ -28,6 +28,7 @@
 <section class="content">
   <header>
     {% block header %}{% endblock %}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </header>
   {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
@@ -36,3 +37,28 @@
 </section>
 
 <!-- FOOTER -->
+<div class="footer">
+	<div class="info">
+		<p>
+			<i class="fa fa-futbol-o" aria-hidden="true"></i>&nbsp;
+			DeCempions a football game for football lovers.
+		</p>
+		<p>
+			<i class="fa fa-futbol-o" aria-hidden="true"></i>&nbsp;
+			Join the community and be the first to score a goal !
+		</p>
+	</div>
+
+	<div class="socials">
+		<div>You can find me on:</div>
+		<div>
+			<a href="https://github.com/A-725-K"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+			<a href="https://www.linkedin.com/in/💾-andrea-canepa-81261a1b2/"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+		</div>
+	</div>
+
+	<div class="copyright">
+		<p><i>Developed and maintained by:</i></p>
+		<p>&#169; A-725-K
+	</div>
+</div>
