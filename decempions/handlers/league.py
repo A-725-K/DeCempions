@@ -20,7 +20,10 @@ def league():
 			league_per_week[match['week']] = [match]
 
 	for week, matches in league_per_week.items():
-		league_per_week[week] = sorted(matches, key=lambda m: m['match_date'].timestamp())
+		league_per_week[week] = sorted(
+			matches,
+			key=lambda m: m['match_date'].timestamp(),
+		)
 
 	return render_template(
 		TEMPLATES['LEAGUE'],

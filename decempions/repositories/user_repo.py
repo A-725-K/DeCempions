@@ -38,14 +38,15 @@ WHERE NOT u.is_admin
 ORDER BY u.points DESC
 	'''
 
-
 	def create_user(self, username, password, email, first_name, last_name):
 		db = connection.get_db()
 		try:
 			db.execute(
 				self._insert_query,
-				(username, generate_password_hash(password), email,
-				first_name, last_name,)
+				(
+					username, generate_password_hash(password),
+					email, first_name, last_name,
+				),
 			)
 			db.commit()
 		except db.IntegrityError as e:
@@ -54,23 +55,19 @@ ORDER BY u.points DESC
 
 		return None
 
-
 	def find_user_by_username(self, username, all_fields=False):
 		db = connection.get_db()
 		if not all_fields:
 			return db.execute(self._find_by_username, (username,)).fetchone()
 		return db.execute(self._find_by_username_all, (username,)).fetchone()
 
-
 	def find_user_by_email(self, email):
 		db = connection.get_db()
 		return db.execute(self._find_by_email, (email,)).fetchone()
 
-
 	def find_admin_by_token(self, token):
 		db = connection.get_db()
 		return db.execute(self._find_admin_by_token, (token,)).fetchone()
-
 
 	def update_user(self, id, first_name, last_name, dob, team):
 		db = connection.get_db()
@@ -82,29 +79,25 @@ ORDER BY u.points DESC
 			db.commit()
 		except db.IntegrityError as e:
 			print(str(e))
-			return f'Cannot update user'
+			return 'Cannot update user'
 
 		return None
-
 
 	def get_ranking(self):
 		db = connection.get_db()
 		return db.execute(self._get_ranking).fetchall()
 
-
 	def get_users_favourite_teams(self):
 		db = connection.get_db()
 		return db.execute(self._get_users_favourite_teams).fetchall()
-
 
 	def update_user_points(self, user_id, points):
 		db = connection.get_db()
 		try:
 			db.execute(self._update_user_points, (points, user_id,))
 			db.commit()
-		except:
+		except Exception as e:
 			print(str(e))
-			return f'Cannot update user points'
+			return 'Cannot update user points'
 
 		return None
-

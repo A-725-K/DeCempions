@@ -6,6 +6,7 @@ from email_validator import validate_email, EmailNotValidError
 from decempions.repositories.user_repo import UserRepository
 from decempions.repositories.result_repo import ResultRepository
 from decempions.repositories.match_repo import MatchRepository
+from decempions.repositories.team_repo import TeamRepository
 
 
 def check_username(username):
@@ -43,7 +44,7 @@ among -_?^%&/$£!+*[]{}.,;:@|
 def check_email(email):
 	if not email: return 'Email is required'
 	try:
-  		sanitized_email_addr = validate_email(email)
+		sanitized_email_addr = validate_email(email)
 	except EmailNotValidError as e:
 		print(str(e))
 		return None, 'Email address is not valid'
@@ -130,7 +131,8 @@ def update_players_points(week):
 		matches_of_the_week[match['id']] = match
 	matches_ids = [k for k in matches_of_the_week.keys()]
 
-	user_guesses = {}	# { user: { points, correct } }
+	# { user: { points, correct } }
+	user_guesses = {}
 	for guess in result_repo.get_results_by_matches_ids(matches_ids):
 		match_points, correct_guess = _get_match_points(
 			matches_of_the_week[guess['match_id']]['goal_home'],

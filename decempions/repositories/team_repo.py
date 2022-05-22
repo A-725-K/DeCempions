@@ -27,7 +27,7 @@ SELECT
 	lost,
 	goal_scored,
 	goal_conceded,
- 	(goal_scored-goal_conceded) AS goal_diff,
+	(goal_scored - goal_conceded) AS goal_diff,
 	matches_played
 FROM Team
 ORDER BY
@@ -49,12 +49,10 @@ ORDER BY
 
 		return None
 
-
 	def find_id_by_team_name(self, team_name):
 		db = connection.get_db()
 		row = db.execute(self._find_id_by_team_name, (team_name,)).fetchone()
 		return row['id']
-
 
 	def update_match_result(self, id, won, tie, lost, scored, conceded, points):
 		db = connection.get_db()
@@ -70,18 +68,15 @@ ORDER BY
 
 		return None
 
-
 	def get_standing(self):
 		db = connection.get_db()
 		rows = db.execute(self._get_standing).fetchall()
 		return rows
 
-
 	def find_teams_names_and_ids(self):
 		db = connection.get_db()
 		rows = db.execute(self._find_teams_names_and_ids).fetchall()
 		return rows
-
 
 	def find_team_by_id(self, id):
 		db = connection.get_db()

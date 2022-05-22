@@ -7,12 +7,11 @@ from decempions.user_utils import check_name, check_dob, check_team
 from decempions.constants import (
 	MONTHS, ROUTES, HTTP_METHODS, SETTINGS, TEMPLATES
 )
-from flask import (
-	abort, g, flash, jsonify, make_response, render_template, redirect,
-	request, url_for,
-)
+from flask import g, flash, render_template, redirect, request, url_for
+
 
 find_team = lambda t_id, tt: [team for team in tt if team['id'] == t_id][0]
+
 
 @user_bp.route(
 	ROUTES['EDIT'],
@@ -64,12 +63,12 @@ def handle_post(user, team_repo, user_repo):
 		month = int(month)
 		year = int(year)
 		dob = datetime.strptime(f'{year}-{month}-{day}', SETTINGS['DOB_FMT'])
-	except:
+	except Exception:
 		dob = None
 
 	try:
 		team = int(team)
-	except:
+	except Exception:
 		team = None
 
 	user_repo.update_user(user['id'], first_name, last_name, dob, team)

@@ -59,7 +59,7 @@ def play_next_week():
 def _check_number(n, field_name):
 	try:
 		n = int(n)
-	except:
+	except Exception:
 		return f'{field_name} is not a number'
 	if n < 0: return 'A guess cannot be negative'
 	return None

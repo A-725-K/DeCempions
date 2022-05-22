@@ -1,10 +1,7 @@
-import re
-
 from . import auth_bp
 from flask import flash, redirect, render_template, request, session, url_for
-from decempions.constants import ROUTES, HTTP_METHODS, TEMPLATES, SETTINGS
+from decempions.constants import ROUTES, HTTP_METHODS, TEMPLATES
 from decempions.repositories.user_repo import UserRepository
-from email_validator import validate_email, EmailNotValidError
 from decempions.user_utils import (
 	check_name, check_email, check_username, check_passwords,
 )

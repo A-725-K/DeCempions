@@ -11,9 +11,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-### ---
-### Utility functions
-### ---
+# ---
+# Utility functions
+# ---
 def get_db():
 	if 'db' not in g:
 		g.db = sqlite3.connect(
@@ -32,13 +32,13 @@ def close_db(e=None):
 
 
 def init_app(app):
-    app.teardown_appcontext(close_db)
-    app.cli.add_command(init_db_command)
+	app.teardown_appcontext(close_db)
+	app.cli.add_command(init_db_command)
 
 
-### ---
-### Command line options
-### ---
+# ---
+# Command line options
+# ---
 def init_db_handler():
 	db = get_db()
 	with current_app.open_resource(os.getenv('DB_FILE')) as dbfile:

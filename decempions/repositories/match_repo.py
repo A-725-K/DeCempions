@@ -63,7 +63,6 @@ WHERE week = ?
 
 		return None
 
-
 	def get_match_id_by_week_and_teams(self, week, home_id, out_id):
 		db = connection.get_db()
 		row = db.execute(
@@ -71,7 +70,6 @@ WHERE week = ?
 			(week, home_id, out_id,)
 		).fetchone()
 		return row['id']
-
 
 	def set_result(self, match_id, goal_home, goal_out, result):
 		db = connection.get_db()
@@ -88,11 +86,9 @@ WHERE week = ?
 
 		return None
 
-
 	def get_league(self):
 		db = connection.get_db()
 		return db.execute(self._get_league).fetchall()
-
 
 	def get_next_week(self):
 		db = connection.get_db()
@@ -101,18 +97,15 @@ WHERE week = ?
 			row = db.execute(self._get_next_week_fallback).fetchone()
 		return row['week']
 
-
 	def get_next_matches(self):
 		db = connection.get_db()
 		next_week = self.get_next_week()
 		rows = db.execute(self._get_matches_by_week, (next_week,)).fetchall()
 		return next_week, rows
 
-
 	def get_matches_ids_by_week(self, week):
 		db = connection.get_db()
 		return db.execute(self._get_matches_ids_by_week, (week,)).fetchall()
-
 
 	def get_matches_goals_by_week(self, week):
 		db = connection.get_db()
