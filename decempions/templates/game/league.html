@@ -1,29 +1,30 @@
 {% extends 'base.html' %}
 
 {% block header %}
-	{# <link rel="stylesheet" href="{{ url_for('static', filename='league.css') }}"> #}
-	<h1>{% block title %}League{% endblock %}</h1>
+	<link rel="stylesheet" href="{{ url_for('static', filename='league.css') }}">
 {% endblock %}
 
 {% block content %}
-	<div>
-		<span>WEEK</span>
-		<span>DATE</span>
-		<span>HOME TEAM</span>
-		<span>OUT TEAM</span>
-		<span>RESULT</span>
-	</div>
-	{% for match in league %}
-		{% if match['week'] == next_week %}
-			<div style="background-color: cyan">
-		{% else %}
-			<div>
-		{% endif %}
-			<span>{{ match['week'] }}</span>
-			<span>{{ match['match_date'].strftime('%d/%m/%y') }}</span>
-			<span>{{ match['homeT'] }}</span>
-			<span>{{ match['outT'] }}</span>
-			<span>{{ match['goal_home'] if match['goal_home'] is not none else '' }}-{{ match['goal_out'] if match['goal_out'] is not none else '' }}</span>
+	{% for week in league %}
+		<div class="carousel-card fade">
+			<h2>Week {{ week }}</h2>
+			{% for match in league[week] %}
+				<div class="result-row">
+					<div class="row-date">
+						{{ match['match_date'].date() }}
+					</div>
+					<div class="row-teams">
+						{{ match['homeT'].upper() }}-{{ match['outT'].upper() }}
+					</div>
+					<div class="row-results">
+						{{ match['goal_home'] if match['goal_home'] is not none else '' }}-{{ match['goal_out'] if match['goal_out'] is not none else '' }}
+					</div>
+				</div>
+			{% endfor %}
+			<div class="buttons-container">
+				<a class="prev" onclick="changeCard(1)">&#10094;</a>
+  			<a class="next" onclick="changeCard(-1)">&#10095;</a>
+			</div>
 		</div>
 	{% endfor %}
 {% endblock %}

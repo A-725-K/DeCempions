@@ -1,0 +1,62 @@
+.carousel-card {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	font-size: 24px;
+	margin-top: 7.5rem;
+	text-align: center;
+	display: none;
+	padding: 0 2rem;
+	background-color: rgba(255, 255, 255, 0.6);
+	border: 8px solid rgb(112, 250, 135);
+	border-radius: 15%;
+}
+
+.buttons-container {
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem;
+	margin: auto;
+	width: 80%;
+}
+
+.fade {
+	animation-name: fade;
+ 	animation-duration: 1s;
+}
+@keyframes fade {
+  from { opacity: .6; }
+  to { opacity: 1; }
+}
+
+.prev, .next {
+  cursor: pointer;
+  width: auto;
+  padding: 1rem;
+  color: green;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: 0.4s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+.next { border-radius: 3px 0 0 3px; }
+.prev:hover, .next:hover { background-color: rgba(0, 0, 0, 0.8); }
+
+.result-row {
+	display: flex;
+	justify-content: space-between;
+}
+
+@media screen and (max-width: 368px) {
+	.carousel-card { width: 70%; }
+	.row-teams, .row-results, .row-date { font-size: 0.8rem; }
+}
+@media screen and (max-width: 720px) {
+	.carousel-card { width: 70%; }
+	.row-teams, .row-results, .row-date { font-size: 1rem; }
+}
+@media screen and (max-width: 1200px) {
+	.carousel-card { width: 70%; }
+}
