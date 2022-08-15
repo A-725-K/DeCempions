@@ -74,8 +74,10 @@
 				</div>
 
 				<div class="userpic">
-					{% set fname = 'assets/teams/' + user_team + '.png' %}
-					<img src="{{ url_for('static', filename=fname) }}"></img>
+					{% if user_team %}
+						{% set fname = 'assets/teams/' + user_team + '.png' %}
+						<img src="{{ url_for('static', filename=fname) }}"></img>
+					{% endif %}
 				</div>
 			</div>
 		</div>

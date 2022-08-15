@@ -24,6 +24,10 @@ def edit():
 	team_repo = TeamRepository()
 	teams = team_repo.find_teams_names_and_ids()
 	curr_year = datetime.now().year
+	user_team = find_team(
+		user['my_team'],
+		teams,
+	)['name'] if user['my_team'] else ''
 
 	if request.method == HTTP_METHODS['POST']:
 		err = handle_post(user, team_repo, user_repo)
@@ -37,7 +41,7 @@ def edit():
 		year=curr_year,
 		teams=teams,
 		months=MONTHS,
-		user_team=find_team(user['my_team'], teams)['name']
+		user_team=user_team,
 	)
 
 
