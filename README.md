@@ -21,6 +21,9 @@ I am ***NOT*** a UI developer, and the styling has been made with bare CSS and a
 - [ ] Dockerize the project
 - [ ] Introduce the *League* concept
   - [ ] Handle multiple leagues
+- [ ] Administrator panel/dashboard:
+  - [ ] League statistics and overview
+  - [ ] Insert/Modify results
 - [ ] Better handling of next week:
   - [ ] Let the user change/update the guess for the next week
 - [ ] Pagination in list pages
