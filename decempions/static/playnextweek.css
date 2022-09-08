@@ -33,6 +33,12 @@
 
 .vertical-line { border-right: 2px solid black; }
 
+input[type=number] {
+	background-color: white;
+	foreground-color: black;
+	border-color: #298243;
+}
+
 .submit-container {
 	display: flex;
 	margin: 2rem auto;
@@ -59,6 +65,8 @@
 @media screen and (max-width: 768px) {
 	.matches-table { width: 90%; }
 	.week-nr { font-size: 2rem; }
-	.matches-table-hd { font-size: 0.75rem; }
-	.matches-table-tr { font-size: 1rem; }
+	.matches-table-hd, .matches-table-tr {
+		font-size: 0.75rem;
+		font-weight: bolder;
+	}
 }

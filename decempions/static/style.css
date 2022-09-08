@@ -135,7 +135,11 @@ header { margin-top: 5rem; }
 	}
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
+	.footer { position: absolute; }
+}
+
+@media screen and (min-width: 1112px) {
 	.footer { position: fixed; }
 }
 
