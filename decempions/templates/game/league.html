@@ -22,9 +22,15 @@
 				</div>
 			{% endfor %}
 			<div class="buttons-container">
-				<a class="prev" onclick="changeCard(1)">&#10094;</a>
-  			<a class="next" onclick="changeCard(-1)">&#10095;</a>
+				<a class="prev" onclick="prevNthCard(1)">&#10094;</a>
+  			<a class="next" onclick="nextNthCard(1)">&#10095;</a>
 			</div>
 		</div>
 	{% endfor %}
+
+	<script type="text/javascript">
+		window.onload = () => {
+			showCard({{ next_week-1 }});
+		}
+	</script>
 {% endblock %}

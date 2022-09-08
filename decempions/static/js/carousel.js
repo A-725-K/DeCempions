@@ -1,15 +1,20 @@
 let cardsIndex = 0;
 
 const showCard = (n) => {
-	let cards = document.getElementsByClassName('carousel-card');
+	const cards = Array
+		.from(document.getElementsByClassName('carousel-card'))
+		.reverse();
 
-	if (n > cards.length-1) cardsIndex = 0;
-	if (n < 0) cardsIndex = cards.length-1;
+	if (!cards.length) return;
 
-	for (let i=0; i<cards.length; i++) cards[i].style.display = 'none';
+	cardsIndex = n;
+	
+	if (cardsIndex > cards.length-1) cardsIndex = 0;
+	if (cardsIndex < 0) cardsIndex = cards.length-1;
+
+	cards.map((card) => card.style.display = 'none');
 	cards[cardsIndex].style.display = 'flex';
 };
 
-const changeCard = (n) => { showCard(cardsIndex += n); };
-
-showCard(cardsIndex);
+const nextNthCard = (n) => { showCard(cardsIndex += n); };
+const prevtNthCard = (n) => { showCard(cardsIndex -= n); };
