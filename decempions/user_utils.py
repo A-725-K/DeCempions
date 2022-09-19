@@ -32,11 +32,11 @@ uppercase character, one lowercase character, one digit, and one character
 among -_?^%&/$£!+*[]{}.,;:@|
 	'''
 
-	if len(password) < SETTINGS['MIN_LEN']: return format_err
-	if not re.search('[a-z]', password): return format_err
-	if not re.search('[A-Z]', password): return format_err
-	if not re.search('\d', password): return format_err
-	if not re.search('[-_?^%&/$£!+*\[\]{}.,;:@|]', password): return format_err
+	if len(password) < SETTINGS['MIN_LEN'] or \
+		not re.search('[a-z]', password) or \
+		not re.search('[A-Z]', password) or \
+		not re.search('\d', password) or \
+		not re.search('[-_?^%&/$£!+*\[\]{}.,;:@|]', password): return format_err
 
 	return None
 
