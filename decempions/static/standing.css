@@ -51,6 +51,8 @@
 .first-rows { background-color: rgba(0,255,0,0.2); }
 .last-rows { background-color: rgba(255,0,0,0.2); }
 
+.footer { position: relative; }
+
 @media screen and (max-width: 480px) {
 	.first-cell { width: 30%; }
 
