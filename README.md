@@ -30,6 +30,8 @@ I am ***NOT*** a UI developer, and the styling has been made with bare CSS and a
 - [ ] Let the users upload their profile pictures
 - [ ] Write tests
 - [ ] Improve security
+- [ ] Make better responsiveness
+  - [ ] Fix footer appearance
 - [ ] Fix bugs (I am 100% sure there are some :wink:)
 
 ## Author
