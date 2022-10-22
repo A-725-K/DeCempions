@@ -8,7 +8,7 @@ const showCard = (n) => {
 	if (!cards.length) return;
 
 	cardsIndex = n;
-	
+
 	if (cardsIndex > cards.length-1) cardsIndex = 0;
 	if (cardsIndex < 0) cardsIndex = cards.length-1;
 
@@ -17,4 +17,4 @@ const showCard = (n) => {
 };
 
 const nextNthCard = (n) => { showCard(cardsIndex += n); };
-const prevtNthCard = (n) => { showCard(cardsIndex -= n); };
+const prevNthCard = (n) => { showCard(cardsIndex -= n); };
