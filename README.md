@@ -31,7 +31,6 @@ I am ***NOT*** a UI developer, and the styling has been made with bare CSS and a
 - [ ] Write tests
 - [ ] Improve security
 - [ ] Make better responsiveness
-  - [ ] Fix footer appearance
 - [ ] Fix bugs (I am 100% sure there are some :wink:)
 
 ## Author

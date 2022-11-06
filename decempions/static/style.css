@@ -3,6 +3,7 @@ body {
 	margin: 0;
 	height: 100%;
 	width: 100%;
+	min-height: 100%;
 	position: absolute;
 
 	font-family: impact; /* fantasy; */
@@ -12,6 +13,9 @@ body {
 	background-attachment: fixed;
 	background-image: url('./assets/background_hor.jpg');
 	background-repeat: no-repeat;
+
+	display: flex;
+	flex-direction: column;
 }
 
 /* HIDE THE ARROWS IN NUMBER FIELDS: chrome, firefox */
@@ -27,6 +31,8 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
+
+.content { flex: 1; }
 
 /* NAVBAR */
 nav {
@@ -86,7 +92,6 @@ header { margin-top: 5rem; }
 
 .footer {
 	display: flex;
-	position: relative;
 	left: 0;
 	bottom: 0;
 	width: 100%;
@@ -132,14 +137,6 @@ header { margin-top: 5rem; }
 		font-size: 0.8rem;
 		margin-bottom: 0.5rem;
 	}
-}
-
-@media screen and (min-width: 768px) {
-	.footer { position: absolute; }
-}
-
-@media screen and (min-width: 1112px) {
-	.footer { position: fixed; }
 }
 
 @media screen and (max-width: 340px) {
