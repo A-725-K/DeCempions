@@ -22,6 +22,13 @@ flask init-db
 ## Note
 I am ***NOT*** a UI developer, and the styling has been made with bare CSS and a lot of effort to learn it better :smile: It is "*responsive*" but the best experience you will get is on a monitor with resolution `1440 × 900`, like the monitor I used to develop the project.
 
+## How it looks
+| **Index** | **Homepage** |
+| :-: | :-: |
+| ![](img/index.png) | ![](img/home.png) |
+| **Guess the score** | **League** |
+| ![](img/play.png) | ![](img/league.png) |
+
 ## Future features?
 - [ ] Dockerize the project
 - [ ] Introduce the *League* concept
