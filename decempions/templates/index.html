@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="title">DeCempions</div>
+
+	<div class="box-wrapper">
+		<div class="responsive">
+		  <div class="box">
+		    <img src="{{ url_for('static', filename='assets/standing_th.jpeg') }}">
+		    <div class="description">Standings up to date, constantly updated!</div>
+		  </div>
+		</div>
+
+		<div class="responsive">
+		  <div class="box">
+		    <img src="{{ url_for('static', filename='assets/history_th.jpeg') }}">
+		    <div class="description">Keep an eye on all the statistics in the league!</div>
+		  </div>
+		</div>
+
+		<div class="responsive">
+		  <div class="box">
+		    <img src="{{ url_for('static', filename='assets/home_th.jpeg') }}">
+		    <div class="description">Easy to use interface! Jump immediately in the game!</div>
+		  </div>
+		</div>
+	</div>
+{% endblock %}

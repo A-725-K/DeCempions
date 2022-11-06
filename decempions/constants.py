@@ -4,6 +4,7 @@ HTTP_METHODS = {
 }
 
 ROUTES = {
+	'INDEX': '/',
 	'REGISTER': '/register',
 	'LOGIN': '/login',
 	'LOGOUT': '/logout',
@@ -22,6 +23,7 @@ ADMIN_ROUTES = {
 }
 
 TEMPLATES = {
+	'INDEX': 'index.html',
 	'REGISTER': 'auth/register.html',
 	'LOGIN': 'auth/login.html',
 	'HOME': 'home.html',
