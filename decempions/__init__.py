@@ -1,9 +1,10 @@
 import os
 
-from flask import Flask
 from dotenv import load_dotenv
+from flask import Flask, render_template
 
 from .database import connection
+from .constants import HTTP_METHODS, ROUTES, TEMPLATES
 
 load_dotenv()
 
@@ -30,6 +31,10 @@ def build_server(test_config=None):
 
 	ensure_instance_path(server)
 	connection.init_app(server)
+
+	@server.route(ROUTES['INDEX'], methods=[HTTP_METHODS['GET']])
+	def index():
+		return render_template(TEMPLATES['INDEX'])
 
 	from . import handlers
 	server.register_blueprint(handlers.auth_bp)
