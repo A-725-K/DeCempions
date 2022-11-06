@@ -45,18 +45,6 @@ a:active { text-decoration: none; }
 	margin: auto;
 }
 
-@media screen and (max-width: 568px) {
-	.card {
-		width: 12rem;
-		height: 12rem;
-		font-size: 20px;
-	}
-	.card img {
-		width: 6rem;
-		height: 6rem;
-	}
-}
-
 @media screen and (max-width: 768px) {
 	.cards-container {
 		flex-direction: column;
@@ -76,5 +64,17 @@ a:active { text-decoration: none; }
 
 	.welcome {
 		margin-bottom: 1rem;
+	}
+}
+
+@media screen and (max-width: 568px) {
+	.card {
+		width: 12rem;
+		height: 12rem;
+		font-size: 20px;
+	}
+	.card img {
+		width: 6rem;
+		height: 6rem;
 	}
 }

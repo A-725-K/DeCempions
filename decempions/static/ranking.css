@@ -73,17 +73,6 @@
 	height: 2.5rem;
 }
 
-@media screen and (max-width: 480px) {
-	.first-cell { width: 30%; }
-
-	.cell {
-		width: 30%;
-		margin-left: 5%;
-	}
-
-	.hide-cell-md { display: none; }
-}
-
 @media screen and (max-width: 768px) {
 	.cell {
 		width: 15%;
@@ -102,4 +91,14 @@
 		width: 1.5rem;
 		height: 1.5rem;
 	}
+}
+@media screen and (max-width: 480px) {
+	.first-cell { width: 30%; }
+
+	.cell {
+		width: 30%;
+		margin-left: 5%;
+	}
+
+	.hide-cell-md { display: none; }
 }

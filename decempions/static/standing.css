@@ -53,17 +53,6 @@
 
 .footer { position: relative; }
 
-@media screen and (max-width: 480px) {
-	.first-cell { width: 30%; }
-
-	.cell {
-		width: 30%;
-		margin-left: 5%;
-	}
-
-	.hide-cell-md { display: none; }
-}
-
 @media screen and (max-width: 768px) {
 	.cell {
 		width: 15%;
@@ -73,4 +62,14 @@
 	.row, .row-common { width: 85% }
 	.hide-cell-sm { display: none; }
 	.standing-box { width: 90%; }
+}
+@media screen and (max-width: 480px) {
+	.first-cell { width: 30%; }
+
+	.cell {
+		width: 30%;
+		margin-left: 3%;
+	}
+
+	.hide-cell-md { display: none; }
 }

@@ -49,14 +49,16 @@
 	justify-content: space-between;
 }
 
-@media screen and (max-width: 368px) {
-	.carousel-card { width: 70%; }
-	.row-teams, .row-results, .row-date { font-size: 0.8rem; }
+@media screen and (max-width: 1200px) {
+	.carousel-card { width: 65%; }
 }
 @media screen and (max-width: 720px) {
-	.carousel-card { width: 70%; }
-	.row-teams, .row-results, .row-date { font-size: 1rem; }
+	.carousel-card { width: 70%; padding: 0 1rem; }
+	.row-teams, .row-results { font-size: 1rem; }
+	.row-date { font-size: 0.7rem; }
 }
-@media screen and (max-width: 1200px) {
-	.carousel-card { width: 70%; }
+@media screen and (max-width: 480px) {
+	.carousel-card { width: 80%; }
+	.row-teams, .row-results { font-size: 0.8rem; }
+	.row-date { font-size: 0.5rem; }
 }
