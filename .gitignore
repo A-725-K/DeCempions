@@ -3,3 +3,4 @@ instance
 data
 TODO.*
 .DS_Store
+__pycache__

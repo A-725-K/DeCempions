@@ -64,4 +64,4 @@ def handle_registration():
 
 	if err: return err, fill_values
 
-	return None
+	return None, {}
