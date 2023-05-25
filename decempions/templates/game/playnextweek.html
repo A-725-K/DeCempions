@@ -8,57 +8,63 @@
 	<div class="week-nr">
   	<h1>PLAY WEEK: {{ week }}</h1>
 	</div>
-	<div class="matches-table">
-		<div class="matches-table-hd">
-			<div class="col1"><b>Home Team</b></div>
-			<div class="col2"><b>Out Team</b></div>
-			<div class="col3"><b>GH</b></div>
-			<div class="col4"><b>GO</b></div>
-			<div class="col5"><b>Result</b></div>
+	{% if not is_overdue %}
+		<div class="matches-table">
+			<div class="matches-table-hd">
+				<div class="col1"><b>Home Team</b></div>
+				<div class="col2"><b>Out Team</b></div>
+				<div class="col3"><b>GH</b></div>
+				<div class="col4"><b>GO</b></div>
+				<div class="col5"><b>Result</b></div>
+			</div>
+			<form method="post">
+				{% for match in matches %}
+					<div class="matches-table-tr">
+						<div class="col1 vertical-line">{{ match['home_name'].upper() }}</div>
+						<div class="col2">{{ match['out_name'].upper() }}</div>
+						<div class="col3">
+							{% if not match['result'] %}
+								{% if user_guess[match['id']] %}
+									<input type="number" class="w100" value="{{ user_guess[match['id']]['guess_goal_home'] }}" disabled>
+								{% else %}
+									<input type="number" name="guess_home_{{ match['id'] }}" id="guess_home_{{ match['id'] }}" min="0" max="15" class="w100" required>
+								{% endif %}
+							{% else %}
+								{% if user_guess[match['id']] %}
+									<input type="number" class="w100" value="{{ user_guess[match['id']]['guess_goal_home'] }}" disabled>
+								{% else %}
+									<input type="number" value="-" class="w100" disabled>
+								{% endif %}
+							{% endif %}
+						</div>
+						<div class="col4">
+							{% if not match['result'] %}
+								{% if user_guess[match['id']] %}
+									<input type="number" class="w100" value="{{ user_guess[match['id']]['guess_goal_out'] }}" disabled>
+								{% else %}
+									<input type="number" name="guess_out_{{ match['id'] }}" id="guess_out_{{ match['id'] }}" min="0" max="15" class="w100" required>
+								{% endif %}
+							{% else %}
+								{% if user_guess[match['id']] %}
+									<input type="number" class="w100" value="{{ user_guess[match['id']]['guess_goal_out'] }}" disabled>
+								{% else %}
+									<input type="number" value="-" class="w100" disabled>
+								{% endif %}
+							{% endif %}
+						</div>
+						<div class="col5">{{ match['result'] or '-' }}</div>
+					</div>
+				{% endfor %}
+				{% if not user_guess %}
+					<div class="submit-container">
+						<input type="submit" value="Save results">
+					</div>
+				{% endif %}
+			</form>
 		</div>
-		<form method="post">
-			{% for match in matches %}
-				<div class="matches-table-tr">
-					<div class="col1 vertical-line">{{ match['home_name'].upper() }}</div>
-					<div class="col2">{{ match['out_name'].upper() }}</div>
-					<div class="col3">
-						{% if not match['result'] %}
-							{% if user_guess[match['id']] %}
-								<input type="number" class="w100" value="{{ user_guess[match['id']]['guess_goal_home'] }}" disabled>
-							{% else %}
-								<input type="number" name="guess_home_{{ match['id'] }}" id="guess_home_{{ match['id'] }}" min="0" max="15" class="w100" required>
-							{% endif %}
-						{% else %}
-							{% if user_guess[match['id']] %}
-								<input type="number" class="w100" value="{{ user_guess[match['id']]['guess_goal_home'] }}" disabled>
-							{% else %}
-								<input type="number" value="-" class="w100" disabled>
-							{% endif %}
-						{% endif %}
-					</div>
-					<div class="col4">
-						{% if not match['result'] %}
-							{% if user_guess[match['id']] %}
-								<input type="number" class="w100" value="{{ user_guess[match['id']]['guess_goal_out'] }}" disabled>
-							{% else %}
-								<input type="number" name="guess_out_{{ match['id'] }}" id="guess_out_{{ match['id'] }}" min="0" max="15" class="w100" required>
-							{% endif %}
-						{% else %}
-							{% if user_guess[match['id']] %}
-								<input type="number" class="w100" value="{{ user_guess[match['id']]['guess_goal_out'] }}" disabled>
-							{% else %}
-								<input type="number" value="-" class="w100" disabled>
-							{% endif %}
-						{% endif %}
-					</div>
-					<div class="col5">{{ match['result'] or '-' }}</div>
-				</div>
-			{% endfor %}
-			{% if not user_guess %}
-				<div class="submit-container">
-					<input type="submit" value="Save results">
-				</div>
-			{% endif %}
-		</form>
-	</div>
+	{% else %}
+		<div class="no-match">
+			No match to play at the moment!<br>Come back later!
+		</div>
+	{% endif %}
 {% endblock %}

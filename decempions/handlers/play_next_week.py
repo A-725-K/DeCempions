@@ -18,7 +18,7 @@ def play_next_week():
 	match_repo = MatchRepository()
 	result_repo = ResultRepository()
 
-	week, matches = match_repo.get_next_matches()
+	week, matches, is_overdue = match_repo.get_next_matches()
 	matches_ids = [m['id'] for m in matches]
 
 	user_guess_query_res = result_repo.get_results_by_user_and_matches(
@@ -39,6 +39,7 @@ def play_next_week():
 			user_id,
 			matches_ids,
 			result_repo,
+			is_overdue,
 		)
 		if err: flash(err)
 		return render_template(
@@ -46,6 +47,7 @@ def play_next_week():
 			matches=matches,
 			user_guess=new_user_guess,
 			week=week,
+			is_overdue=False,
 		)
 
 	return render_template(
@@ -53,6 +55,7 @@ def play_next_week():
 		matches=matches,
 		user_guess=user_guess,
 		week=week,
+		is_overdue=is_overdue,
 	)
 
 
@@ -65,9 +68,12 @@ def _check_number(n, field_name):
 	return None
 
 
-def handle_play_next_week(user_id, matches_ids, result_repo):
+def handle_play_next_week(user_id, matches_ids, result_repo, is_overdue):
 	results_to_insert = []
 	guess = {}
+
+	if is_overdue: return None, f'It is too late to send the results'
+
 	for match_id in matches_ids:
 		guess_home_html_id = f'guess_home_{match_id}'
 		guess_out_html_id = f'guess_out_{match_id}'

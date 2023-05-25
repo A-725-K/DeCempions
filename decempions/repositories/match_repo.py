@@ -25,14 +25,14 @@ JOIN Team ot ON out_team = ot.id
 ORDER BY week DESC
 	'''
 	_get_next_week = '''
-SELECT DISTINCT week
+SELECT DISTINCT week, match_date AS mdate
 FROM Match
 WHERE match_date >= CURRENT_DATE
 ORDER BY week ASC
 LIMIT 1
 	'''
 	_get_next_week_fallback = '''
-SELECT DISTINCT MAX(week) AS week, match_date AS mdate FROM Match
+SELECT DISTINCT MAX(week) AS week, MAX(match_date) AS mdate FROM Match
 '''
 	_get_matches_by_week = '''
 SELECT m.id, week, ht.name AS home_name, ot.name AS out_name, result
@@ -101,9 +101,12 @@ WHERE week = ?
 
 	def get_next_matches(self):
 		db = connection.get_db()
-		next_week, _ = self.get_next_week()
+		next_week, next_mdate = self.get_next_week()
+		if type(next_mdate) == str:
+			next_mdate = datetime.fromisoformat(next_mdate)
+		today = datetime.today()
 		rows = db.execute(self._get_matches_by_week, (next_week,)).fetchall()
-		return next_week, rows
+		return next_week, rows, today >= next_mdate
 
 	def get_matches_ids_by_week(self, week):
 		db = connection.get_db()
