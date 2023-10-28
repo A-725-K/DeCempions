@@ -10,7 +10,7 @@ from decempions.repositories.match_repo import MatchRepository
 def league():
 	match_repo = MatchRepository()
 	league = match_repo.get_league()
-	next_week = match_repo.get_next_week()
+	next_week, _ = match_repo.get_next_week()
 
 	league_per_week = {}
 	for match in league:
