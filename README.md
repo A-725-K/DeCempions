@@ -30,7 +30,7 @@ I am ***NOT*** a UI developer, and the styling has been made with bare CSS and a
 | ![](img/play.png) | ![](img/league.png) |
 
 ## Future features?
-- [ ] Dockerize the project
+- [ ] Containerize the project
 - [ ] Introduce the *League* concept
   - [ ] Handle multiple leagues
 - [ ] Administrator panel/dashboard:
