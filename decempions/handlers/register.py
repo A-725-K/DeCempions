@@ -1,7 +1,5 @@
 from . import auth_bp
-from flask import (
-	flash, redirect, render_template, request, session, url_for, make_response,
-)
+from flask import flash, redirect, render_template, request, session, url_for
 from decempions.constants import ROUTES, HTTP_METHODS, TEMPLATES
 from decempions.repositories.user_repo import UserRepository
 from decempions.user_utils import (

@@ -72,7 +72,7 @@ def handle_play_next_week(user_id, matches_ids, result_repo, is_overdue):
 	results_to_insert = []
 	guess = {}
 
-	if is_overdue: return None, f'It is too late to send the results'
+	if is_overdue: return None, 'It is too late to send the results'
 
 	for match_id in matches_ids:
 		guess_home_html_id = f'guess_home_{match_id}'
