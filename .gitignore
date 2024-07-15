@@ -4,3 +4,4 @@ data
 TODO.*
 .DS_Store
 __pycache__
+*.pem
