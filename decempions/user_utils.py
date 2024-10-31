@@ -16,7 +16,7 @@ def check_username(username):
 		return f'Username should have at least {SETTINGS["MIN_LEN"]} characters'
 	if username_len > SETTINGS['MAX_LEN']:
 		return f'Username should have at most {SETTINGS["MAX_LEN"]} characters'
-	if not re.match('^\w+$', username):
+	if not re.match(r'^\w+$', username):
 		return 'Username must contain only letters and numbers'
 
 	return None
@@ -33,10 +33,10 @@ among -_?^%&/$£!+*[]{}.,;:@|
 	'''
 
 	if len(password) < SETTINGS['MIN_LEN'] or \
-		not re.search('[a-z]', password) or \
-		not re.search('[A-Z]', password) or \
-		not re.search('\d', password) or \
-		not re.search('[-_?^%&/$£!+*\[\]{}.,;:@|]', password): return format_err
+		not re.search(r'[a-z]', password) or \
+		not re.search(r'[A-Z]', password) or \
+		not re.search(r'\d', password) or \
+		not re.search(r'[-_?^%&/$£!+*\[\]{}.,;:@|]', password): return format_err
 
 	return None
 
@@ -54,7 +54,7 @@ def check_email(email):
 
 def check_name(name, field):
 	if not name: return None
-	if not re.match('[a-zA-Z]+', name) or len(name) > SETTINGS['MAX_LEN']:
+	if not re.match(r'[a-zA-Z]+', name) or len(name) > SETTINGS['MAX_LEN']:
 		return f'{field} is not a valid name'
 	return None
 
