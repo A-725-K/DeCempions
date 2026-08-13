@@ -33,7 +33,7 @@ WHERE id = ?
 	_get_ranking = '''
 SELECT username, u.points, u.matches_played, name
 FROM User u
-JOIN Team t ON my_team = t.id
+FULL OUTER JOIN Team t ON my_team = t.id
 WHERE NOT u.is_admin
 ORDER BY u.points DESC
 	'''
